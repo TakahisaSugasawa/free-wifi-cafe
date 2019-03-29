@@ -1,2 +1,2 @@
 # Cafe-with-FreeWifi
-FreeWi-Fiのあるカフェをまとめたログイン制のサイト
+フリーWi-Fiのあるカフェをまとめたログイン制のサイト
