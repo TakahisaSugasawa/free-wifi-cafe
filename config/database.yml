@@ -1,0 +1,24 @@
+
+default: &default
+  adapter: mysql2
+  encoding: utf8
+  reconnect: false
+  pool: 5
+  username: Settings.database[:user_name]
+  password: Settings.database[:password]
+  host: localhost
+
+development:
+  <<: *default
+  database: free-wifi-cafe_development
+
+test:
+  <<: *default
+  database: free-wifi-cafe_test
+
+
+production:
+  <<: *default
+  database: free-wifi-cafe_production
+  # username: free-wifi-cafe
+  # password: <%= ENV['FREE-WIFI-CAFE_DATABASE_PASSWORD'] %>
