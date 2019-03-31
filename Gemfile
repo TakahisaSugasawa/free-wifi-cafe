@@ -7,7 +7,8 @@ gem 'mysql2', '>= 0.3.18', '< 0.5'
 
 gem 'puma', '~> 3.0'
 
-gem 'sass-rails', '~> 5.0'
+# gem 'sass-rails', '~> 5.0'
+gem 'sassc-rails'
 
 gem 'uglifier', '>= 1.3.0'
 
