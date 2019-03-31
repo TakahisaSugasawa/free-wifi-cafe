@@ -4,8 +4,8 @@ default: &default
   encoding: utf8
   reconnect: false
   pool: 5
-  username: Settings.database[:user_name]
-  password: Settings.database[:password]
+  username: <%= Settings.database["user_name"] %>
+  password: <%= Settings.database["password"] %>
   host: localhost
 
 development:
