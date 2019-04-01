@@ -20,5 +20,7 @@ test:
 production:
   <<: *default
   database: free-wifi-cafe_production
+  username: <%= Settings.database["user_name"] %>
+  password: <%= Settings.database["password"] %>
   # username: free-wifi-cafe
   # password: <%= ENV['FREE-WIFI-CAFE_DATABASE_PASSWORD'] %>
