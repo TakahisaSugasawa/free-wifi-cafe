@@ -22,7 +22,8 @@ production:
   encoding: utf8
   reconnect: false
   pool: 5
-  database: free-wifi-cafe_production
+  database: <%= ENV['DB_NAME'] %>
   username: <%= ENV['DB_USERNAME'] %>
   password: <%= ENV['DB_PASSWORD'] %>
+  port:     <%= ENV['DB_PORT'] %>
   host: localhost
