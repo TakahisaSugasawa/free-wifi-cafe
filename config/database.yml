@@ -7,8 +7,6 @@ default: &default
   username: <%= ENV['DATABASE_DEV_USER'] %>
   password: <%= ENV['DATABASE_DEV_PASSWORD'] %>
 
-  host: localhost
-
 development:
   <<: *default
   database: free-wifi-cafe_development
