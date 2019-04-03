@@ -4,8 +4,8 @@ default: &default
   encoding: utf8
   reconnect: false
   pool: 5
-  username: 'takahisa'
-  password: 'st09034869'
+  username: <%= ENV['DATABASE_DEV_USER'] %>
+  password: <%= ENV['DATABASE_DEV_PASSWORD'] %>
   host: localhost
 
 development:
