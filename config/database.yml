@@ -4,8 +4,9 @@ default: &default
   encoding: utf8
   reconnect: false
   pool: 5
-  username: <%= Settings.database["user_name"] %>
-  password: <%= Settings.database["password"] %>
+  username: <%= ENV['DATABASE_DEV_USER'] %>
+  password: <%= ENV['DATABASE_DEV_PASSWORD'] %>
+
   host: localhost
 
 development:
@@ -26,4 +27,4 @@ production:
   username: <%= ENV['DB_USERNAME'] %>
   password: <%= ENV['DB_PASSWORD'] %>
   port:     <%= ENV['DB_PORT'] %>
-  host: localhost
+  host: <%= ENV['DB_HOSTNAME'] %>
