@@ -17,8 +17,8 @@
               <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">アカウント</a>
                 <div class="dropdown-menu" aria-labelledby="dropdown01">
                   <%= link_to "マイページ",class: "dropdown-item" %>
-                  <%= link_to "設定", class: "dropdown-item" %>
-                  <%= link_to "ログアウト", method: :delete ,class: "dropdown-item" %>
+                  <%= link_to "設定",edit_user_registration_path, class: "dropdown-item" %>
+                  <%= link_to "ログアウト", destroy_user_session_path, method: :delete ,class: "dropdown-item" %>
                 </div>
             </li>
                 
