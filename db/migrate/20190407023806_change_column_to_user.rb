@@ -9,5 +9,5 @@ class ChangeColumnToUser < ActiveRecord::Migration[5.0]
   def down
     change_column :users, :username, :string
     # add_index :users, :username,                 unique: true
-  end
+  end 
 end
