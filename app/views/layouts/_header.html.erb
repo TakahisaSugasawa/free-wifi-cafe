@@ -21,14 +21,12 @@
                   <%= link_to "ログアウト", destroy_user_session_path, method: :delete ,class: "dropdown-item" %>
                 </div>
             </li>
-                
                 <!--管理者のみ表示できる、利用できるようにしたい-->
-                <!--<li class="nav-item">-->
-                <!--  <%= link_to "ユーザー一覧", class: "nav-link" %>-->
-                <!--</li>-->
-                <!--<li class="nav-item">-->
-                <!--  <%= link_to "記事投稿画面(管理者)",class: "nav-link" %>-->
-                <!--</li>-->
+            <% if current_user.try(:admin?) %>
+              <li class="nav-item">
+                <%= link_to "　管理者画面",rails_admin_path, class: "nav-link" %>
+              </li>
+            <% end %>
           <% else %>
             <li class="nav-item">
               <%= link_to "このサイトについて",about_path,class: "nav-link" %>
