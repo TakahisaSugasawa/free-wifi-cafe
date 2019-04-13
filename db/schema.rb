@@ -10,7 +10,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190410091638) do
+ActiveRecord::Schema.define(version: 20190413024124) do
+
+  create_table "articles", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "store_name",                    null: false
+    t.text     "adress",          limit: 65535, null: false
+    t.string   "area",                          null: false
+    t.string   "station"
+    t.text     "access",          limit: 65535
+    t.text     "wifi",            limit: 65535, null: false
+    t.text     "plug",            limit: 65535, null: false
+    t.text     "business_hours",  limit: 65535, null: false
+    t.text     "regular_holiday", limit: 65535, null: false
+    t.string   "phone"
+    t.text     "url",             limit: 65535
+    t.integer  "user_id"
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
+    t.index ["user_id"], name: "index_articles_on_user_id", using: :btree
+  end
 
   create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "email",                  default: "",    null: false
@@ -37,4 +55,5 @@ ActiveRecord::Schema.define(version: 20190410091638) do
     t.index ["username"], name: "index_users_on_username", using: :btree
   end
 
+  add_foreign_key "articles", "users"
 end
