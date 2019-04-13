@@ -1,0 +1,66 @@
+<h1>店舗投稿</h1>
+<%= form_for :post, url: articles_path do |f| %>
+  <p>
+    <%= f.label :store_name, "店名" %><br>
+    <%= f.text_field :store_name %>
+  </p>
+  
+  <p>
+    画像アップロード機能（できれば複数）
+  </p>
+  
+  <p>
+    <%= f.label :adress, "住所" %><br>
+    <%= f.text_area :adress, cols: 60, rows: 8 %>
+  </p>
+  
+  <p>
+    <%= f.label :area, "エリア" %><br>
+    <%= f.text_field :area %>
+  </p>
+  
+  <p>
+    <%= f.label :station, "最寄駅" %><br>
+    <%= f.text_field :station %>
+  </p>
+  
+  <p>
+    <%= f.label :access, "アクセス" %><br>
+    <%= f.text_area :access, cols: 60, rows: 8 %>
+  </p>
+  
+  <p>
+    <%= f.label :wifi, "WI-FI" %><br>
+    <%= f.text_area :wifi, cols: 60, rows: 8 %>
+  </p>
+  
+  <p>
+    <%= f.label :plug, "コンセント" %><br>
+    <%= f.text_area :plug, cols: 60, rows: 8 %>
+  </p>
+  
+  
+  <p>
+    <%= f.label :business_hours, "営業時間" %><br>
+    <%= f.text_area :business_hours, cols: 60, rows: 8 %>
+  </p>
+  
+  <p>
+    <%= f.label :regular_holiday, "定休日" %><br>
+    <%= f.text_area :regular_holiday, cols: 60, rows: 8 %>
+  </p>
+  
+  <p>
+    <%= f.label :phone, "電話番号" %><br>
+    <%= f.text_field :phone %>
+  </p>
+ 
+ <p>
+    <%= f.label :url, "URL" %><br>
+    <%= f.text_area :url, cols: 60, rows: 8 %>
+  </p>
+ 
+  <p>
+    <%= f.submit "登録"%>
+  </p>
+<% end %>

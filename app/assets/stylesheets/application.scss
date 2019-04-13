@@ -1,4 +1,7 @@
 // Custom bootstrap variables must be set or imported *before* bootstrap.
 @import "bootstrap";
 
-body { padding-top: 70px; }
+body { 
+  padding-top: 70px; 
+  padding-bottomg: 70px; 
+}
