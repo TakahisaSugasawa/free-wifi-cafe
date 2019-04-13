@@ -4,13 +4,27 @@ class ArticlesController < ApplicationController
     
   end
   
-  # get /articles
+  # post /articles
   def create
     @article = Article.new(article_params)
+    @article.user = current_user
     @article.save
+    # logger.debug @article.errors.inspect
     redirect_to @article
   end
   
+  # get /article/:id
+  def show
+    @article = Article.find(params[:id])
+  end
+  
+  
+  def index
+    
+  end
+  
+  
+  #ストロングパラメータで指定したキーの値を受け取ることを許可
   private
     def article_params
       params.require(:article).permit(:store_name, :adress, :access, :area,

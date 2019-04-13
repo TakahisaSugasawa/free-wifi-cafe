@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   devise_for :users
   
-  resource :articles
+  resources :articles
   
   root 'static_pages#home'
 

@@ -9,5 +9,5 @@ class User < ApplicationRecord
         # :confirmable, #メール登録認証機能
          :trackable,   #サインイン回数、IPアドレス等を記録
          :validatable #メールアドレスとパスワードのバリデーション
-
+  has_many :artcles, dependent: :destroy
 end

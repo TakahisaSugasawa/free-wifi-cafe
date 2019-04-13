@@ -24,7 +24,7 @@
                 <!--管理者のみ表示できる、利用できるようにしたい-->
             <% if current_user.try(:admin?) %>
               <li class="nav-item">
-                <%= link_to "　管理者画面",rails_admin_path, class: "nav-link" %>
+                <%= link_to "管理者画面",rails_admin_path, class: "nav-link" %>
               </li>
             <% end %>
           <% else %>
