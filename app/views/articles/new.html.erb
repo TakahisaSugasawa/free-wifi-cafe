@@ -1,5 +1,5 @@
 <h1>店舗投稿</h1>
-<%= form_for :post, url: articles_path do |f| %>
+<%= form_for :article, url: articles_path do |f| %>
   <p>
     <%= f.label :store_name, "店名" %><br>
     <%= f.text_field :store_name %>
