@@ -1,0 +1,27 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  store_name: MyString
+  adress: MyText
+  area: MyString
+  station: MyString
+  access: MyText
+  wifi: MyText
+  plug: MyText
+  business_hours: MyText
+  regular_holiday: MyText
+  phone: MyString
+  url: MyText
+
+two:
+  store_name: MyString
+  adress: MyText
+  area: MyString
+  station: MyString
+  access: MyText
+  wifi: MyText
+  plug: MyText
+  business_hours: MyText
+  regular_holiday: MyText
+  phone: MyString
+  url: MyText
