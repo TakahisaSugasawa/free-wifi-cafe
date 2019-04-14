@@ -6,10 +6,12 @@
     <th>内容</th>
   </tr>
 
-  <% @articles.each do |post| %>
+  <% @articles.each do |article| %>
     <tr>
-      <td><%= post.store_name %></td>
-      <td><%= post.adress %></td>
+      <td><%= article.store_name %></td>
+      <td><%= article.adress %></td>
+      <td><%= link_to '詳細', article %></td>
+      <td><%= link_to '編集', edit_article_path(article) %></td>
     </tr>
   <% end %>
 </table>
