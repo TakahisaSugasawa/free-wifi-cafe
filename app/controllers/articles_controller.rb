@@ -1,16 +1,19 @@
 class ArticlesController < ApplicationController
   # get /articles/new
   def new
-    
+      @article = Article.new
   end
   
   # post /articles
   def create
     @article = Article.new(article_params)
     @article.user = current_user
-    @article.save
-    # logger.debug @article.errors.inspect
-    redirect_to @article
+    if @article.save
+    # logger.debug @article.errors.inspect 
+      redirect_to @article  
+    else
+      render :new
+    end
   end
   
   # get /article/:id
@@ -18,11 +21,15 @@ class ArticlesController < ApplicationController
     @article = Article.find(params[:id])
   end
   
-  
+  # get /articles
   def index
     @articles = Article.all
   end
   
+  # get /artcles/:id/edit
+  def edit
+    @article = Article.find(params[:id]) 
+  end
   
   #ストロングパラメータで指定したキーの値を受け取ることを許可
   private

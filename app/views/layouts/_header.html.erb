@@ -8,7 +8,7 @@
         <ul class="navbar-nav mr-auto">
           <% if user_signed_in? %>
             <li class="nav-item">
-              <%= link_to "記事一覧",class: "nav-link" %>
+              <%= link_to "記事一覧",articles_path,class: "nav-link" %>
             </li>
             <li class="nav-item">
               <%= link_to "いいねした店舗",class: "nav-link" %>
@@ -32,7 +32,7 @@
               <%= link_to "このサイトについて",about_path,class: "nav-link" %>
             </li>
             <li class="nav-item">
-              <%= link_to "記事一覧",class: "nav-link" %>
+              <%= link_to "記事一覧",articles_path,class: "nav-link" %>
             </li>
             <li class="nav-item">
               <%= link_to "新規登録",new_user_registration_path,class: "nav-link" %>

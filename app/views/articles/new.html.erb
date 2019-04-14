@@ -1,5 +1,17 @@
 <h1>店舗投稿</h1>
+  
 <%= form_for :article, url: articles_path do |f| %>
+
+  <% if @article.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= @article.errors.count %>件のエラーが発生したため保存ができませんでした。</h2>
+      <ul>
+      <% @article.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
   <p>
     <%= f.label :store_name, "店名" %><br>
     <%= f.text_field :store_name %>
