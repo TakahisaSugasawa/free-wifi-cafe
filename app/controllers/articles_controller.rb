@@ -41,6 +41,13 @@ class ArticlesController < ApplicationController
     end    
   end
   
+  def destroy
+    @article = Article.find(params[:id])
+    @article.destroy
+    
+    redirect_to articles_path
+  end
+  
   #ストロングパラメータで指定したキーの値を受け取ることを許可
   private
     def article_params
