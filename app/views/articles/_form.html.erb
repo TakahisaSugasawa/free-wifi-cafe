@@ -1,0 +1,10 @@
+<% if @article.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= @article.errors.count %>件のエラーが発生したため保存ができませんでした。</h2>
+      <ul>
+      <% @article.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
