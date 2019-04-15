@@ -31,6 +31,16 @@ class ArticlesController < ApplicationController
     @article = Article.find(params[:id]) 
   end
   
+  # patch /artcles/:id
+  def update
+    @article = Article.find(params[:id])
+    if @article.update(article_params)
+      redirect_to @article
+    else
+      render :edit
+    end    
+  end
+  
   #ストロングパラメータで指定したキーの値を受け取ることを許可
   private
     def article_params
