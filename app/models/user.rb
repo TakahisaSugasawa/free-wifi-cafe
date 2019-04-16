@@ -10,4 +10,5 @@ class User < ApplicationRecord
          :trackable,   #サインイン回数、IPアドレス等を記録
          :validatable #メールアドレスとパスワードのバリデーション
   has_many :artcles, dependent: :destroy
+  has_many :commtents, dependent: :destroy
 end
