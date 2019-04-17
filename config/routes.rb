@@ -4,6 +4,10 @@ Rails.application.routes.draw do
   
   resources :articles
   
+  resources :articles do 
+    resources :comments
+  end
+  
   root 'static_pages#home'
 
   get '/home',   to: 'static_pages#home'
