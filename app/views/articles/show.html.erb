@@ -58,3 +58,17 @@
    <strong>URL：</strong>
     <%= @article.url %>
  </p>
+ 
+ <%= form_for [@article, @comment] do |f| %>
+    <p>
+      <%= f.label :title, "タイトル"%><br>
+      <%= f.text_field :title%>
+    </p>
+    <p>
+      <%= f.label :content, "内容" %><br>
+      <%= f.text_area :content, cols: 60, rows: 8 %>
+    </p>
+    <p>
+      <%= f.submit "コメントする", class: "btn btn-primary" %>
+    </p>
+<% end %>
