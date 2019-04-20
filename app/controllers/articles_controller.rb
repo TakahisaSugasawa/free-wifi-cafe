@@ -19,6 +19,7 @@ class ArticlesController < ApplicationController
   # get /article/:id
   def show
     @article = Article.find(params[:id])
+    @comment = @article.comments.build #親モデルに対する外部参照キー(article_di)を自動でセット
   end
   
   # get /articles
