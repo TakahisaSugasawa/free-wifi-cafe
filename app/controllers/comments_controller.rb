@@ -3,8 +3,9 @@ class CommentsController < ApplicationController
   #POST /articles/:article_id/comments
   def create
     @article = Article.find(params[:article_id])
-    @comment = @article.comments.build(comment_params)
+    @comment = @article.comments.build(comment_params) #親モデルに対する外部参照キー(article_id)を自動でセット
     @comment.user = current_user
+    # logger.debug @comment.inspect
     if @comment.save
       # logger.debug @comment.errors.inspect
       # logger.debug @comment.inspect

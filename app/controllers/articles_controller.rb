@@ -19,7 +19,7 @@ class ArticlesController < ApplicationController
   # get /article/:id
   def show
     @article = Article.find(params[:id])
-    @comment = @article.comments.build #親モデルに対する外部参照キー(article_di)を自動でセット
+    @comment = Comment.new #コメント投稿フォーム用に空のオブジェクトを作成
   end
   
   # get /articles
