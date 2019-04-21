@@ -1,5 +1,4 @@
-<% if user_signed_in? %>
-  <h2>コメント</h2>
+
   <p>
   <strong>名前：</strong>
   <%= comment.user.username %>
@@ -19,4 +18,4 @@
     <%= link_to '削除', [comment.article, comment],
                 method: :delete, data: { confirm: '削除しますか？' } %>
   </p>
-<% end%>
+

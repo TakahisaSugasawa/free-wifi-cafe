@@ -58,9 +58,12 @@
    <strong>URL：</strong>
     <%= @article.url %>
  </p>
- 
- <%= render @article.comments%>
-  <!--render partial: "comments/comment", collection: @article.comments-->
+ <% if user_signed_in? %>
+   <h2>口コミ一覧</h2>
+   <%= render @article.comments%>
+   <!--render partial: "comments/comment", collection: @article.comments-->
+ <% end%>
+  
   
  <%= render "comments/form" %>
   
