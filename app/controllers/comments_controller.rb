@@ -1,6 +1,8 @@
 class CommentsController < ApplicationController
-  
-  #POST /articles/:article_id/comments
+  before_action :authenticate_user!
+  before_action :admin_user, only: [:destroy]
+    
+  #POST /articles/:article_id/comments 
   def create
     @article = Article.find(params[:article_id])
     @comment = @article.comments.build(comment_params) #親モデルに対する外部参照キー(article_id)を自動でセット
@@ -27,5 +29,10 @@ class CommentsController < ApplicationController
   private
     def comment_params
       params.require(:comment).permit(:title,:content)
+    end
+    
+    def admin_user
+      redirect_to(root_url) if current_user.nil? || !current_user.admin?
+      # logger.debug current_user.errors.inspect 
     end
 end

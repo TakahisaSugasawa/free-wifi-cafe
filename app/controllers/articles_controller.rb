@@ -62,7 +62,6 @@ class ArticlesController < ApplicationController
     
     def admin_user
       redirect_to(root_url) if current_user.nil? || !current_user.admin?
-      # logger.debug current_user.username
-       logger.debug current_user.errors.inspect 
+      # logger.debug current_user.errors.inspect 
     end
 end
