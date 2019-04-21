@@ -1,4 +1,7 @@
 class ArticlesController < ApplicationController
+  # 管理者のみ投稿・編集・削除することができる
+  before_action :admin_user, only: [:new,:create,:edit,:update,:destroy]
+  
   # get /articles/new
   def new
       @article = Article.new
@@ -55,5 +58,11 @@ class ArticlesController < ApplicationController
       params.require(:article).permit(:store_name, :adress, :access, :area,
                               :station, :access, :wifi, :plug, :business_hours,
                               :regular_holiday, :phone, :url)
+    end
+    
+    def admin_user
+      redirect_to(root_url) if current_user.nil? || !current_user.admin?
+      # logger.debug current_user.username
+       logger.debug current_user.errors.inspect 
     end
 end
