@@ -60,23 +60,11 @@
  </p>
  
  <h2>コメント</h2>
-  <% @article.comments.each do |comment| %>
-    <p>
-      <strong>名前：</strong>
-      <%= comment.user.username %>
-    </p>
-    
-    <p>
-      <strong>タイトル：</strong>
-      <%= comment.title %>
-    </p>
-     
-    <p>
-      <strong>内容：</strong>
-      <%= simple_format comment.content %>
-    </p>
-  <% end %>
+  <%= render @article.comments%>
+  <!--render partial: "comments/comment", collection: @article.comments-->
+
  
+  
  <%= form_for [@article, @comment] do |f| %>
     <p>
       <%= f.label :title, "タイトル"%><br>
