@@ -1,4 +1,5 @@
-<%= form_for [@article, @comment] do |f| %>
+<% if user_signed_in?%>
+  <%= form_for [@article, @comment] do |f| %>
     <p>
       <%= f.label :title, "タイトル"%><br>
       <%= f.text_field :title%>
@@ -10,4 +11,5 @@
     <p>
       <%= f.submit "コメントする", class: "btn btn-primary" %>
     </p>
+  <% end %>
 <% end %>
