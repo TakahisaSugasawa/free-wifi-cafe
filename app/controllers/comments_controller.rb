@@ -13,8 +13,8 @@ class CommentsController < ApplicationController
     else
       render :"articles/new"
     end
-    
   end
+  
   
   private
     def comment_params
