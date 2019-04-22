@@ -8,9 +8,9 @@ class CommentsController < ApplicationController
     @comment = @article.comments.build(comment_params) #親モデルに対する外部参照キー(article_id)を自動でセット
     @comment.user = current_user
     # logger.debug @comment.inspect
+    @comment.title = "無題" if @comment.title.nil? || @comment.title.blank?
     if @comment.save
       # logger.debug @comment.errors.inspect
-      # logger.debug @comment.inspect
       redirect_to article_path(@article)
     else
       render :"articles/new"
