@@ -23,6 +23,7 @@ class ArticlesController < ApplicationController
   def show
     @article = Article.find(params[:id])
     @comment = Comment.new #コメント投稿フォーム用に空のオブジェクトを作成
+    @user = User.find(@article.user_id)
   end
   
   # get /articles
