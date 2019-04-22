@@ -13,9 +13,10 @@
     <strong>内容：</strong>
     <%= simple_format comment.content %>
   </p>
-      
+  
+<% if current_user.admin? %>
   <p>
     <%= link_to '削除', [comment.article, comment],
                 method: :delete, data: { confirm: '削除しますか？' } %>
   </p>
-
+<% end %>
