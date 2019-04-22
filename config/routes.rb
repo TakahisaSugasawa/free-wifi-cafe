@@ -1,10 +1,16 @@
 Rails.application.routes.draw do
+  get 'users/index'
+
+  get 'users/show'
+
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   devise_for :users
   
+  resources :users, only: [:index, :show]
+  
   resources :articles
   
-  resources :articles , only: [:create , :destroy ] do 
+  resources :articles , only: [:create, :destroy] do 
     resources :comments
   end
   
