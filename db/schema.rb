@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190423105253) do
+ActiveRecord::Schema.define(version: 20190423124404) do
 
   create_table "articles", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "store_name",                    null: false
@@ -61,6 +61,7 @@ ActiveRecord::Schema.define(version: 20190423105253) do
     t.string   "username",                             default: "",    null: false
     t.boolean  "admin",                                default: false
     t.text     "self_introduction",      limit: 65535
+    t.string   "image"
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true, using: :btree
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
