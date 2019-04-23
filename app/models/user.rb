@@ -11,6 +11,6 @@ class User < ApplicationRecord
          :validatable #メールアドレスとパスワードのバリデーション
   has_many :articles, dependent: :destroy
   has_many :comments, dependent: :destroy
-  mount_uploader :image, ImageUploader #カラムの名前をmount_uploaderに指定
+  mount_uploader :image, ImageUploader #モデルとアップローダーを紐づける
 
 end
