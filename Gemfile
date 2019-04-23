@@ -19,6 +19,7 @@ gem 'jbuilder', '~> 2.5'
 gem 'bcrypt', '~> 3.1.7'
 gem 'rails_admin', '~> 1.3'
 gem 'cancancan', '~> 2.0'
+gem 'carrierwave'
 
 
 group :development, :test do
