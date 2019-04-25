@@ -1,6 +1,5 @@
 class User < ApplicationRecord
-  # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
+  
   devise :database_authenticatable, #DBに保存するパスワードの暗号化（必須）
          :registerable, #サインアップ処理
          :recoverable, #パスワードリセット
@@ -11,6 +10,5 @@ class User < ApplicationRecord
          :validatable #メールアドレスとパスワードのバリデーション
   has_many :articles, dependent: :destroy
   has_many :comments, dependent: :destroy
-  mount_uploader :image, ImageUploader #モデルとアップローダーを紐づける
-
+  mount_uploader :image, ImageUploader #モデルとアップローダーを紐づける    
 end
