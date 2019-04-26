@@ -29,6 +29,11 @@ class ImageUploader < CarrierWave::Uploader::Base
      %w(jpg jpeg gif png)
   end
   
+  # デフォルト画像を設定
+  def default_url
+    "default.jpg"
+  end
+  
   protected
   # 一意となるトークンを作成
   def secure_token

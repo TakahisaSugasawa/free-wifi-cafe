@@ -19,7 +19,7 @@
       <%= image_tag current_user.image.to_s %>
       <label><%= f.check_box :remove_image %> 画像を削除</label>
     <% else %>
-      <%= image_tag 'no_image.png' %>
+      <%= image_tag 'default.jpg' %>
       <%= f.hidden_field :image_cache %>
     <% end %>
       <%= f.file_field :image %>
