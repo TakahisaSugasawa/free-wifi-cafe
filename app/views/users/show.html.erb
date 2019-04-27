@@ -1,17 +1,21 @@
 <h1>マイページ</h1>
   
-  
-  <p>
-    プロフィール画像
-    <%= image_tag @user.image %>
-  </p>
-  
-  <p>
-    <strong>ユーザー名：</strong>
-    <%= @user.username %>
-  </p>
-  
-  <p>
-    <strong>自己紹介文：</strong>
-    <%= simple_format @user.self_introduction %>
-  </p>
+<div class="col-md-6 offset-md-3 mypage">
+  <table class="table">
+    <tbody>
+        <tr>
+            <th>プロフィール画像</th>
+            <td><%= image_tag @user.image.thumb.url %></td>
+        </tr>
+        <tr>
+            <th>名前</th>
+            <td><%= @user.username %></td>
+        </tr>
+        <tr>
+            <th>自己紹介</th>
+            <td><%= @user.self_introduction %></td>
+        </tr>
+    </tbody>
+  </table>
+</div>
+
