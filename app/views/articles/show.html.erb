@@ -1,63 +1,56 @@
 <h1>記事詳細画面</h1>
 
-  <p>
-    <strong>店名：</strong>
-    <%= @article.store_name %>
-  </p>
+<div class="col-md-6 offset-md-3 mypage">
+  <table class="table table-hover">
+    <tbody>
+        <tr>
+            <th>店名</th>
+            <th><%= @article.store_name %></th>
+        </tr>
+        <tr>
+            <th>画像</th>
+            <td><%= image_tag @article.image.thumb.url %></td>
+        </tr>
+        <tr>
+            <th>エリア</th>
+            <td><%= @article.area %></td>
+        </tr>
+        <tr>
+            <th>最寄駅</th>
+            <td><%= @article.station %></td>
+        </tr>
+        <tr>
+            <th>アクセス</th>
+            <td><%= @article.access %></td>
+        </tr>
+        <tr>
+            <th>Wifi</th>
+            <td><%= @article.wifi %></td>
+        </tr>
+        <tr>
+            <th>コンセント</th>
+            <td><%= @article.plug %></td>
+        </tr>
+        <tr>
+            <th>営業時間</th>
+            <td><%= @article.business_hours %></td>
+        </tr>
+        <tr>
+            <th>定休日</th>
+            <td><%= @article.regular_holiday %></td>
+        </tr>
+        <tr>
+            <th>電話番号</th>
+            <td><%= @article.phone %></td>
+        </tr>
+        <tr>
+            <th>URL</th>
+            <td><%= @article.url %></td>
+        </tr>
+    </tbody>
+  </table>
+</div>
   
-  <p>
-    画像アップロード機能（できれば複数）
-  </p>
-  
-  <p>
-    <strong>住所：</strong>
-    <%= @article.adress %>
-  </p>
-  
-  <p>
-    <strong>エリア：</strong>
-    <%= @article.area %>
-  </p>
-  
-  <p>
-    <strong>最寄駅：</strong>
-    <%= @article.station %>
-  </p>
-  
-  <p>
-    <strong>アクセス：</strong>
-    <%= @article.access %>
-  </p>
-  
-  <p>
-    <strong>wifi：</strong>
-    <%= @article.wifi %>
-  </p>
-  
-  <p>
-    <strong>コンセント：</strong>
-    <%= @article.plug %>
-  </p>
-  
-  <p>
-    <strong>営業時間：</strong>
-    <%= @article.business_hours %>
-  </p>
-  
-  <p>
-    <strong>定休日：</strong>
-    <%= @article.regular_holiday %>
-  </p>
-  
-  <p>
-    <strong>電話番号：</strong>
-    <%= @article.phone %>
-  </p>
- 
- <p>
-   <strong>URL：</strong>
-    <%= @article.url %>
- </p>
  <% if user_signed_in? %>
    <h2>口コミ一覧</h2>
    <%= render @article.comments%>

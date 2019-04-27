@@ -4,69 +4,76 @@
 
   <%= render 'form'%>
   
-  <p>
+  <div class="col-md-6 offset-md-3 form-article-edit">
     <%= f.label :store_name, "店名" %><br>
-    <%= f.text_field :store_name %>
-  </p>
+    <%= f.text_field :store_name ,class: 'form-control'%>
+  </div>
   
-  <p>
-    画像アップロード機能（できれば複数）
-  </p>
+  <div class="col-md-6 offset-md-3 image">
+    <%= f.label :store_name, "お店の画像" %><br>
+    <% if @article.image? %>
+      <%= image_tag @article.image.thumb ,class:"rounded mx-auto d-block" %>
+        <div class="checkbox-inline">
+          <label><%= f.check_box :remove_image %> 画像を削除</label>
+        </div>
+    <% else %>
+      <%= image_tag 'default.jpg' %>
+      <%= f.hidden_field :image_cache %> <!--バリデーション時などに画像を保持する-->
+    <% end %>
+      <div class="button-inline">
+        <%= f.file_field :image %>
+      </div>
+  </div>
   
-  <p>
-    <%= f.label :adress, "住所" %><br>
-    <%= f.text_area :adress, cols: 60, rows: 8 %>
-  </p>
-  
-  <p>
+  <div class="col-md-6 offset-md-3 form-article-edit">
     <%= f.label :area, "エリア" %><br>
-    <%= f.text_field :area %>
-  </p>
+    <%= f.text_field :area ,class: 'form-control'%>
+  </div>
   
-  <p>
+  <div class="col-md-6 offset-md-3 form-article-edit">
     <%= f.label :station, "最寄駅" %><br>
-    <%= f.text_field :station %>
-  </p>
+    <%= f.text_field :station ,class: 'form-control',class: 'form-control'%>
+  </div>
   
-  <p>
+  <div class="col-md-6 offset-md-3 form-article-edit">
     <%= f.label :access, "アクセス" %><br>
-    <%= f.text_area :access, cols: 60, rows: 8 %>
-  </p>
+    <%= f.text_area :access, cols: 60, rows: 8,class: 'form-control'%>
+  </div>
   
-  <p>
+  <div class="col-md-6 offset-md-3 form-article-edit">
     <%= f.label :wifi, "WI-FI" %><br>
-    <%= f.text_area :wifi, cols: 60, rows: 8 %>
-  </p>
+    <%= f.text_area :wifi,class: 'form-control' %>
+  </div>
   
-  <p>
+  <div class="col-md-6 offset-md-3 form-article-edit">
     <%= f.label :plug, "コンセント" %><br>
-    <%= f.text_area :plug, cols: 60, rows: 8 %>
-  </p>
+    <%= f.text_area :plug, class: 'form-control'%>
+  </div>
   
   
-  <p>
+  <div class="col-md-6 offset-md-3 form-article-edit">
     <%= f.label :business_hours, "営業時間" %><br>
-    <%= f.text_area :business_hours, cols: 60, rows: 8 %>
-  </p>
+    <%= f.text_area :business_hours, cols: 60, rows: 8,class: 'form-control' %>
+  </div>
   
-  <p>
+  <div class="col-md-6 offset-md-3 form-article-edit">
     <%= f.label :regular_holiday, "定休日" %><br>
-    <%= f.text_area :regular_holiday, cols: 60, rows: 8 %>
-  </p>
+    <%= f.text_area :regular_holiday, cols: 60, rows: 8 ,class: 'form-control'%>
+  </div>
   
-  <p>
-    <%= f.label :phone, "電話番号" %><br>
-    <%= f.text_field :phone %>
-  </p>
+  <div class="col-md-6 offset-md-3 form-article-edit">
+    <%= f.label :phone, "電話番号"%><br>
+    <%= f.text_field :phone ,class: 'form-control'%>
+  </div>
  
- <p>
+  <div class="col-md-6 offset-md-3 form-article-edit">
     <%= f.label :url, "URL" %><br>
-    <%= f.text_area :url, cols: 60, rows: 8 %>
-  </p>
+    <%= f.text_area :url, cols: 60, rows: 8 ,class: 'form-control'%>
+  </div>
  
-  <p>
-    <%= f.submit "登録"%>
-  </p>
+  <div class="col-md-6 offset-md-3 actions">
+    <%= f.submit "更新する",class:'btn btn-lg btn-primary btn-block rounded-pill' %>
+  </div>
   
 <% end %>
 <%= link_to '戻る', articles_path %>
