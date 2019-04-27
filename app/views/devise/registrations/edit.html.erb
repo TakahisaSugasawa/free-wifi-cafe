@@ -40,12 +40,9 @@
   <% end %>
 
   <div class="col-md-6 offset-md-3 form-group">
-    <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
-    <%= f.password_field :password, autocomplete: "new-password",class: 'form-control' %>
-    <% if @minimum_password_length %>
-      <br />
-      <em><%= @minimum_password_length %> characters minimum</em>
-    <% end %>
+    <%= f.label :password %> <i>(変更がない場合は未入力にしてください)</i><br />
+    <%= f.password_field :password, autocomplete: "new-password",class: 'form-control',placeholder:"6文字以上入力してください" %>
+    
   </div>
 
   <div class="col-md-6 offset-md-3 form-group">
@@ -54,8 +51,8 @@
   </div>
 
   <div class="col-md-6 offset-md-3 form-group">
-    <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
-    <%= f.password_field :current_password, autocomplete: "current-password",class: 'form-control' %>
+    <%= f.label :current_password %><br />
+    <%= f.password_field :current_password, autocomplete: "current-password",class: 'form-control', placeholder:"更新時には現在のパスワードを入力する必要があります" %>
   </div>
 
   <div class="col-md-6 offset-md-3 actions">
