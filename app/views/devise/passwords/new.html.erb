@@ -3,14 +3,16 @@
 <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
 
-  <div class="field">
+  <div class="col-md-6 offset-md-3 form-group">
     <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+    <%= f.email_field :email, autofocus: true, autocomplete: "email",class: 'form-control' %>
   </div>
 
-  <div class="actions">
-    <%= f.submit "パスワード再設定用メールを送信する" %>
+  <div class="col-md-6 offset-md-3 actions">
+    <%= f.submit "更新する",class:'btn btn-lg btn-primary btn-block rounded-pill' %>
   </div>
 <% end %>
+  <div class="col-md-6 offset-md-3 form-group">
+    <%= render "devise/shared/links" %>
+  </div>
 
-<%= render "devise/shared/links" %>
