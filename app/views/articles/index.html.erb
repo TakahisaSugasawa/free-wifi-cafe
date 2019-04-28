@@ -1,21 +1,20 @@
 <h1>全ての投稿一覧</h1>
 
-<table>
-  <tr>
-    <th>タイトル</th>
-    <th>内容</th>
-  </tr>
-
-  <% @articles.each do |article| %>
-    <tr>
-      <td><%= article.store_name %></td>
-      <td><%= article.adress %></td>
-      <td><%= link_to '詳細', article %></td>
-      <% if current_user.admin? %>
-        <td><%= link_to '編集', edit_article_path(article) %></td>
-        <td><%= link_to '削除', article_path(article), 
-          method: :delete, data: {confirm: '削除してもよろしいですか？'}%></td>
+<% @articles.each do |article| %>
+  <div class="card col-md-6 offset-md-3" >
+    <img class="card-img-top" >
+    <!--<%= image_tag article.image.thumb.url,class:"card-img-top" %>-->
+    <%= image_tag article.image.thumb.url%>
+    <div class="card-body">
+      <h4 class="card-title"><%= article.store_name %></h4>
+      <p class="card-text">Some quick example text to build on the card title and make up the bulk of </p>
+      <%= link_to '詳細', article %>
+      <% if !current_user.nil? && current_user.admin? %>
+        <%= link_to '編集', edit_article_path(article) %>
+        <%= link_to '削除', article_path(article), 
+          method: :delete, data: {confirm: '削除してもよろしいですか？'}%>
       <% end %>
-    </tr>
-  <% end %>
-</table>
+      <p>いいねマーク</p>
+    </div>
+  </div>
+<% end %>
