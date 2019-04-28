@@ -1,22 +1,18 @@
-
-  <p>
-  <strong>名前：</strong>
-  <%= link_to "#{comment.user.username}",user_path(comment.user)%>
-  </p>
-      
-  <p>
-    <strong>タイトル：</strong>
-    <%= comment.title %>
-  </p>
-       
-  <p>
-    <strong>内容：</strong>
-    <%= simple_format comment.content %>
-  </p>
   
-<% if current_user.admin? %>
-  <p>
-    <%= link_to '削除', [comment.article, comment],
-                method: :delete, data: { confirm: '削除しますか？' } %>
-  </p>
-<% end %>
+  <div class="border-bottom  col-md-6 offset-md-3">
+    <div class="comment-body">
+      <h5 class="comment-username">
+        <%= image_tag comment.user.image.thumb30.url %>
+        <%= link_to "#{comment.user.username}",user_path(comment.user)%>
+      </h5>
+      <h6 class="card-title mb-2 text-muted"><%= comment.title %></h6>
+      <p class="card-text"><%= simple_format comment.content %></p>
+      <% if current_user.admin? %>
+        <p>
+          <%= link_to '削除', [comment.article, comment],
+                  method: :delete, data: { confirm: '削除しますか？' } %>
+        </p>
+      <% end %>
+    </div>
+  </div>
+  

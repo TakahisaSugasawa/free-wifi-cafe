@@ -1,15 +1,15 @@
 <% if user_signed_in?%>
   <%= form_for [@article, @comment] do |f| %>
-    <p>
+    <div class="col-md-6 offset-md-3 form-group">
       <%= f.label :title, "タイトル"%><br>
-      <%= f.text_field :title%>
-    </p>
-    <p>
+      <%= f.text_field :title ,class: 'form-control'%>
+    </div>
+    <div class="col-md-6 offset-md-3 form-group">
       <%= f.label :content, "内容" %><br>
-      <%= f.text_area :content, cols: 60, rows: 8 %>
-    </p>
-    <p>
+      <%= f.text_area :content, cols: 60, rows: 8,class: 'form-control' %>
+    </div>
+    <div class="col-md-6 offset-md-3 form-group">
       <%= f.submit "コメントする", class: "btn btn-primary" %>
-    </p>
+    </div>
   <% end %>
 <% end %>
