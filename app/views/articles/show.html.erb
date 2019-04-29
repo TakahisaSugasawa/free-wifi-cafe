@@ -47,6 +47,15 @@
             <th>URL</th>
             <td><%= @article.url %></td>
         </tr>
+        <tr>
+            <th>地図</th>
+            <td>
+                <iframe frameborder="0" style="border:0; width: 100%; height: 50vh" 
+                src="https://www.google.com/maps/embed/v1/place?key=AIzaSyDOWfdHD1a9TyLFcK8SIAsFpazMnec2gWY&q=<%= @article.store_name %>"
+                allowfullscreen>
+                </iframe>
+            </td>
+        </tr>
     </tbody>
   </table>
 </div>
