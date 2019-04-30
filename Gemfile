@@ -21,6 +21,7 @@ gem 'rails_admin', '~> 1.3'
 gem 'cancancan', '~> 2.0'
 gem 'carrierwave'
 gem 'rmagick'
+gem 'ransack'
 
 
 group :development, :test do
