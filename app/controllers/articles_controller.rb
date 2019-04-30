@@ -27,7 +27,10 @@ class ArticlesController < ApplicationController
   
   # get /articles
   def index
-    @articles = Article.all
+    # 検索オブジェクト
+    @search = Article.ransack(params[:q])
+    # 検索結果
+    @articles = @search.result
   end
   
   # get /artcles/:id/edit
