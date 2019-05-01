@@ -292,3 +292,19 @@ ja:
         default_col_sep: ","
         col_sep: "区切り文字"
         col_sep_help: "空白の場合は'%{value}'区切りです" # value is default_col_sep
+  views:
+    pagination:
+      first: "« 最初"
+      last: "最後 »"
+      previous: "‹ 前"
+      next: "次 ›"
+      truncate: "..."
+  helpers:
+    page_entries_info:
+      one_page:
+        display_entries:
+          zero: ""
+          one: "1-1/1件中"
+          other: "1-%{count}/%{count}件中"
+      more_pages:
+        display_entries: "%{first}-%{last}/%{total}件中"

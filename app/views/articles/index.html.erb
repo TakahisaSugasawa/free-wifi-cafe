@@ -12,7 +12,7 @@
   </div>  
   <div class="actions "><%= f.submit "検索",class:"btn-info" %></div>
 <% end %>
-<h2>検索結果：<%= @articles.count%>件</h2>
+<h2>検索結果：<%= @articles.total_count%>件</h2>
 <%= paginate @articles %>
 
 <% @articles.each do |article| %>
