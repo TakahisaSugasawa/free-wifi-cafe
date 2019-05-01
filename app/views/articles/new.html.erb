@@ -20,8 +20,8 @@
   </div>
   
   <div class="col-md-6 offset-md-3 form-article-new">
-    <%= f.label :area, "エリア" %><br>
-    <%= f.text_field :area, class: 'form-control' %>
+    <%= f.label :city_id, "エリア" %><br>
+    <%= f.collection_select :city_id, City.all,:id,:name,:prompt => "選択してください" %>
   </div>
   
   <div class="col-md-6 offset-md-3 form-article-new">

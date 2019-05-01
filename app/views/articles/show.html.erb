@@ -12,8 +12,12 @@
             <td><%= image_tag @article.image.thumb.url %></td>
         </tr>
         <tr>
+            <th>住所</th>
+            <td><%= @article.adress %></td>
+        </tr>
+        <tr>
             <th>エリア</th>
-            <td><%= @article.area %></td>
+            <td><%= @city.name %></td>
         </tr>
         <tr>
             <th>最寄駅</th>
