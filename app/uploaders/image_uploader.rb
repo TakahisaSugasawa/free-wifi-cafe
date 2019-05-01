@@ -4,12 +4,8 @@ class ImageUploader < CarrierWave::Uploader::Base
   # include CarrierWave::MiniMagick
 
   
-  # S3にアップロードする場合
-  if Rails.env.production? || Rails.env.staging?
-    storage :fog
-  else
-    storage :file
-  end
+  # アップローダーでどんな種類のものを受け取るか指定
+  storage :file
   
   # S3のディレクトリ名
   def store_dir
