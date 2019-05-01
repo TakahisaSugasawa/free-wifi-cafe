@@ -2,11 +2,13 @@
 
 <!--検索機能-->
 <%= search_form_for @search do |f| %>
-  # nameカラムに対して部分一致検索ができる
-  <%= f.label :store_name_cont, "店名" %>
-  <%= f.search_field :store_name_cont %>
+  <!--# store_nameカラムに対して部分一致検索ができる-->
+  <%= f.label :city_id_eq, "エリア" %>
+  <%= f.collection_select :city_id_eq,City.all,:id,:name,:include_blank => '東京都全域' %>
 
-  <!--検索ボタン-->
+  <%= f.label :store_name, "キーワードで検索" %>
+  <%= f.search_field :store_name,placeholder:"例　スタバ　渋谷駅　"%>
+
   <div class="actions"><%= f.submit "検索" %></div>
 <% end %>
 
