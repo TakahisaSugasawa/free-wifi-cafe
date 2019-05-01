@@ -22,6 +22,8 @@ gem 'cancancan', '~> 2.0'
 gem 'carrierwave'
 gem 'rmagick'
 gem 'ransack'
+gem 'kaminari'
+
 
 
 group :development, :test do
