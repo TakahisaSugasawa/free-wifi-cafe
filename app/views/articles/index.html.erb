@@ -13,7 +13,7 @@
   <div class="actions "><%= f.submit "検索",class:"btn-info" %></div>
 <% end %>
 <h2>検索結果：<%= @articles.count%>件</h2>
-
+<%= paginate @articles %>
 
 <% @articles.each do |article| %>
   <div class="card col-md-6 offset-md-3" >
@@ -33,3 +33,4 @@
     </div>
   </div>
 <% end %>
+

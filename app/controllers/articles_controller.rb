@@ -40,7 +40,7 @@ class ArticlesController < ApplicationController
     # 検索オブジェクト
     @search = Article.ransack(params[:q])
     # 検索結果
-    @articles = @search.result
+    @articles = @search.result.page(params[:page]).per(2)
   end
   
   # get /artcles/:id/edit
