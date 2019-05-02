@@ -10,17 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190501001936) do
+ActiveRecord::Schema.define(version: 20190502063218) do
 
   create_table "articles", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.string   "store_name",                    null: false
-    t.text     "adress",          limit: 65535, null: false
+    t.string   "store_name"
+    t.string   "adress"
     t.string   "station"
     t.text     "access",          limit: 65535
-    t.text     "wifi",            limit: 65535, null: false
-    t.text     "plug",            limit: 65535, null: false
-    t.text     "business_hours",  limit: 65535, null: false
-    t.text     "regular_holiday", limit: 65535, null: false
+    t.text     "wifi",            limit: 65535
+    t.text     "plug",            limit: 65535
+    t.text     "business_hours",  limit: 65535
+    t.text     "regular_holiday", limit: 65535
     t.string   "phone"
     t.text     "url",             limit: 65535
     t.integer  "user_id"
@@ -39,7 +39,7 @@ ActiveRecord::Schema.define(version: 20190501001936) do
   end
 
   create_table "comments", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.text     "content",    limit: 65535, null: false
+    t.text     "content",    limit: 65535
     t.integer  "user_id"
     t.integer  "article_id"
     t.datetime "created_at",               null: false
