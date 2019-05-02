@@ -26,6 +26,8 @@ gem 'kaminari' #ページネーション
 gem 'nokogiri' #スクレイピング
 gem 'activerecord-reset-pk-sequence' #idをリセットして1から始まるようにする
 gem 'seed-fu', '~> 2.3' #データの重複登録を防ぐ
+gem 'font-awesome-rails'
+
 
 group :development, :test do
   gem 'byebug', platform: :mri

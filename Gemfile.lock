@@ -294,6 +294,7 @@ DEPENDENCIES
   devise
   devise-i18n
   dotenv-rails
+  font-awesome-rails
   jbuilder (~> 2.5)
   jquery-rails
   kaminari
