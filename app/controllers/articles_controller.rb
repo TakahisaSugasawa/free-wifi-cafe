@@ -34,13 +34,13 @@ class ArticlesController < ApplicationController
     if words.present?
       params[:q][:groupings] = []
       words.split(/[ 　]/).each_with_index do |word, i| #全角空白と半角空白で切って、単語ごとに処理
-        params[:q][:groupings][i] = { store_name_or_station_cont: word }
+        params[:q][:groupings][i] = { store_name_or_access_cont: word }
       end
     end
     # 検索オブジェクト
     @search = Article.ransack(params[:q])
     # 検索結果
-    @articles = @search.result.page(params[:page]).per(2)
+    @articles = @search.result.page(params[:page]).per(20)
   end
   
   # get /artcles/:id/edit
