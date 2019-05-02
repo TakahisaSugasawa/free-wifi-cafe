@@ -24,8 +24,8 @@ class ImageUploader < CarrierWave::Uploader::Base
     process :resize_to_fill => [100, 100]
   end
  
-  version :thumb30 do
-    process :resize_to_fill => [30, 30]
+  version :thumb40 do
+    process :resize_to_fill => [40,40]
   end
   
   # 保存形式をjpgに設定
