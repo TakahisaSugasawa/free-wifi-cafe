@@ -23,6 +23,7 @@ gem 'carrierwave'
 gem 'rmagick'
 gem 'ransack'
 gem 'kaminari'
+gem 'nokogiri'
 
 
 
