@@ -1,0 +1,21 @@
+<% @favorites.each do |favorite| %>
+  <% article = Article.find_by(id: favorite.article_id) %>
+  <div class="card col-sm-8 offset-sm-2" >
+    <div class="card-body">
+      <h4 class="card-title">
+        <%= link_to "#{article.store_name}", article %>
+      </h4>
+      <p class="card-text">
+        <i class="fa fa-map-marker "></i> <%= article.access %>
+      </p>
+      <%= link_to '>>詳細', article %>
+      <% if !current_user.nil? && current_user.admin? %>
+        <%= link_to '編集', edit_article_path(article) %>
+        <%= link_to '削除', article_path(article), 
+          method: :delete, data: {confirm: '削除してもよろしいですか？'}%>
+      <% end %>
+      <p>いいねマーク</p>
+    </div>
+  </div>
+<% end %>
+<!-- paginate @articles>-->
