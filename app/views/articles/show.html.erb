@@ -49,8 +49,7 @@
         </tr>
         <tr>
             <th>URL</th>
-            <td><%= link_to @article.url %></td>
-            
+            <td><%= link_to @article.url unless @article.url.nil?%></td>
         </tr>
         <tr>
             <th>地図</th>
@@ -65,19 +64,18 @@
   </table>
   <span id="article-<%= @article.id %>-favorite">
     <%= render 'shared/favorites', article: @article, favorite: @favorite %>
- </span>
+  </span>
+  <% if !user_signed_in?%>
+    <p><%= button_to "会員登録して口コミを見る！", new_user_registration_path,class:'btn btn-primary mx-auto d-block',method: :get%></p>
+  <% else%>
+    <%= render @article.comments%>
+    <!--render partial: "comments/comment", collection: @article.comments-->
+  <% end%>
 </div>
-  
- <!-- render 'favorites/favorite',article: @article, favorite: @favorite -->
- 
-  
- <% if user_signed_in? %>
-   <h2>口コミ一覧</h2>
-   <%= render @article.comments%>
-   <!--render partial: "comments/comment", collection: @article.comments-->
- <% end%>
+
+
   
   
- <%= render "comments/form" %>
+<%= render "comments/form" %>
   
  
