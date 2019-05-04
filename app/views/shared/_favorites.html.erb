@@ -1,22 +1,15 @@
 <% if user_signed_in? %>
   <% if article.favorite_user(current_user.id) %>
-    <%= button_to article_favorite_path(article, favorite), method: :delete, remote: true,class:'btn btn-success' do %>
-      <p>お気に入りを外す</p>  
+    <%= button_to article_favorite_path(article, favorite), method: :delete, remote: true,class:'btn btn-success mx-auto d-block' do %>
       <span>
-        <%= article.favorites_count %>
+        お気に入りを外す
       </span>
     <% end %>
   <% else %>
-    <%= button_to article_favorites_path(article), remote: true,class:'btn btn-outline-success' do %>
-      <p>お気に入りに追加する</p>  
+    <%= button_to article_favorites_path(article), remote: true,class:'btn btn-outline-success mx-auto d-block' do %>
       <span>
-        <%= article.favorites_count %>
+         お気に入りに追加する
       </span>
     <% end %>  
   <% end %>
-<% else %>
-  <i class="fa fa-star-o "></i> 
-  <span>
-    <%= article.favorites_count %>
-  </span>
 <% end %>

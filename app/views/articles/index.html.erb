@@ -23,13 +23,17 @@
       <p class="card-text">
         <i class="fa fa-map-marker "></i> <%= article.access %>
       </p>
+      <p class="card-text">
+        <% if article.favorites_count? && user_signed_in? %>
+          <i class="fa fa-folder-open "></i> お気に入り登録者数：<%= article.favorites_count %>
+        <% end %>
+      </p>
       <%= link_to '>>詳細', article %>
       <% if !current_user.nil? && current_user.admin? %>
         <%= link_to '編集', edit_article_path(article) %>
         <%= link_to '削除', article_path(article), 
           method: :delete, data: {confirm: '削除してもよろしいですか？'}%>
       <% end %>
-      <p>いいねマーク</p>
     </div>
   </div>
 <% end %>
