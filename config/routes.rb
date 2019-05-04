@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   devise_for :users
   
-  resources :users, only: [:index, :show]
+  resources :users, only: [:show]
   
   resources :articles  do 
     resources :comments ,only: [:create,:destroy]
@@ -12,9 +12,8 @@ Rails.application.routes.draw do
   
   resources :favorites ,only: [:index]
   
-  root 'static_pages#home'
+  root 'articles#index'
 
-  get '/home',   to: 'static_pages#home'
   get '/about',   to: 'static_pages#about'
   get '/question',   to: 'static_pages#question'
 
