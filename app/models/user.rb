@@ -4,7 +4,6 @@ class User < ApplicationRecord
          :registerable, #サインアップ処理
          :recoverable, #パスワードリセット
          :rememberable, #クッキーにログイン情報を保持
-         :timeoutable, #一定時間活動していな場合にアカウントのセッションを破棄
         # :confirmable, #メール登録認証機能
          :trackable,   #サインイン回数、IPアドレス等を記録
          :validatable #メールアドレスとパスワードのバリデーション
