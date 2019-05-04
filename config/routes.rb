@@ -10,6 +10,8 @@ Rails.application.routes.draw do
     resources :favorites ,only: [:create,:destroy]
   end
   
+  resources :favorites ,only: [:index]
+  
   root 'static_pages#home'
 
   get '/home',   to: 'static_pages#home'
