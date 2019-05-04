@@ -47,6 +47,21 @@ ja:
               restricted:  "制限付きユーザーには許可されていない動作です"
             company_id:
               user_not_working_for: "ユーザが所属していない会社です"
+            email:
+              taken: "は既に使用されています。"
+              blank: "が入力されていません。"
+              too_short: "は%{count}文字以上に設定して下さい。"
+              too_long: "は%{count}文字以下に設定して下さい。"
+              invalid: "は有効でありません。"
+            password:
+              taken: "は既に使用されています。"
+              blank: "が入力されていません。"
+              too_short: "は%{count}文字以上に設定して下さい。"
+              too_long: "は%{count}文字以下に設定して下さい。"
+              invalid: "は有効でありません。"
+              confirmation: "が内容とあっていません。"  
+            password_confirmation:
+              confirmation: "が内容とあっていません。"  
         article:
           attributes:
             user: 
