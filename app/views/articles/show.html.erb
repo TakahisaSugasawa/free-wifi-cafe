@@ -62,7 +62,13 @@
         </tr>
     </tbody>
   </table>
+  <span id="article-<%= @article.id %>-favorite">
+    <%= render 'shared/favorites', article: @article, favorite: @favorite %>
+ </span>
 </div>
+  
+ <!-- render 'favorites/favorite',article: @article, favorite: @favorite -->
+ 
   
  <% if user_signed_in? %>
    <h2>口コミ一覧</h2>
