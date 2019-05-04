@@ -25,6 +25,7 @@ class ArticlesController < ApplicationController
     @article = Article.find(params[:id])
     @city = City.find(@article.city_id) #登録されたcity_idを元にCityオブジェクトを検索
     @comment = Comment.new #コメント投稿フォーム用に空のオブジェクトを作成
+    @favorite = Favorite.find_by(user_id: current_user.id, article_id: params[:id]) if user_signed_in?
   end
   
   # get /articles
