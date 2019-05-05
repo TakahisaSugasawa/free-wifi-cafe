@@ -10,13 +10,13 @@ class ArticlesController < ApplicationController
   # post /articles
   def create
     @article = Article.new(article_params)
-    # logger.debug @city.errors.inspect
     @article.user = current_user
     if @article.save
-    # logger.debug @article.errors.inspect 
-      redirect_to @article  
+      redirect_to @article
+      flash[:notice] = "記事が投稿されました。"
     else
       render :new
+      flash[:alert] = "投稿に失敗しました。"
     end
   end
   
@@ -41,7 +41,7 @@ class ArticlesController < ApplicationController
     # 検索オブジェクト
     @search = Article.ransack(params[:q])
     # 検索結果
-    @articles = @search.result.page(params[:page]).per(20)
+    @articles = @search.result.page(params[:page]).per(10)
   end
   
   # get /artcles/:id/edit
@@ -55,15 +55,22 @@ class ArticlesController < ApplicationController
     @article = Article.find(params[:id])
     if @article.update(article_params)
       redirect_to @article
+      flash[:notice] = "記事を更新しました。"
     else
-      render :edit
+      redirect_to edit_article_path(@article)
+      flash[:alert] = "記事の更新に失敗しました。"
     end    
   end
   
   def destroy
     @article = Article.find(params[:id])
-    @article.destroy
-    redirect_to articles_path
+    if @article.destroy
+      redirect_to articles_path
+      flash[:notice] = "記事を削除しました。"
+    else
+      redirect_to edit_article_path(@article)
+      flash[:alert] = "記事の削除に失敗しました。"
+    end
   end
   
   #ストロングパラメータで指定したキーの値を受け取ることを許可
@@ -75,7 +82,9 @@ class ArticlesController < ApplicationController
     end
     
     def admin_user
-      redirect_to(root_url) if current_user.nil? || !current_user.admin?
+      if current_user.nil? || !current_user.admin?
+        redirect_to root_url , alert:'権限がないためアクセスできません。'
+      end
       # logger.debug current_user.errors.inspect 
     end
 end
