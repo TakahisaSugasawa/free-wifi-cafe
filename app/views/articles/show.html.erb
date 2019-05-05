@@ -25,23 +25,23 @@
         </tr>
         <tr>
             <th>アクセス</th>
-            <td><%= @article.access %></td>
+            <td><%= simple_format @article.access %></td>
         </tr>
         <tr>
             <th>Wifi</th>
-            <td><%= @article.wifi %></td>
+            <td><%= simple_format @article.wifi %></td>
         </tr>
         <tr>
             <th>コンセント</th>
-            <td><%= @article.plug %></td>
+            <td><%= simple_format @article.plug %></td>
         </tr>
         <tr>
             <th>営業時間</th>
-            <td><%= @article.business_hours %></td>
+            <td><%= simple_format @article.business_hours %></td>
         </tr>
         <tr>
             <th>定休日</th>
-            <td><%= @article.regular_holiday %></td>
+            <td><%= simple_format @article.regular_holiday %></td>
         </tr>
         <tr>
             <th>電話番号</th>
@@ -49,7 +49,7 @@
         </tr>
         <tr>
             <th>URL</th>
-            <td><%= link_to @article.url unless @article.url.nil?%></td>
+            <td><%= link_to simple_format @article.url unless @article.url.nil?%></td>
         </tr>
         <tr>
             <th>地図</th>
