@@ -4,17 +4,49 @@
 
 
 body { 
-  padding-top: 70px; 
+  padding-top: 80px; 
   padding-bottom: 70px; 
 }
 
+// 店舗一覧ページ
 .card{
   margin-top: 20px; 
 }
 
+// 検索フォームのボーダー
 .border-bottom{
   margin-bottom: 20px; 
+  padding-bottom: 20px; 
 }
-.form-group{
-  
+
+// フラッシュメッセージ
+.alert {
+  background-color: #f2dede;
+  border-color: #eed3d7;
+  color: #b94a48;
+  text-align: center;
+}
+
+.notice {
+  background-color: #dff0d8;
+  border-color:  #d6e9c6;
+  color: #468847;
+  text-align: center;
+}
+
+// noticeだけbootstrapに以下の設定が読み込まれていなかった。
+
+.notice {
+  position: relative;
+  padding: 0.75rem 1.25rem;
+  margin-bottom: 1rem;
+  border: 1px solid transparent;
+  border-radius: 0.25rem;
+}
+
+// ページネーションの中央寄せ
+
+.pagination {
+  display: inline-flex;
+  margin: 20px 0;
 }

@@ -12,11 +12,12 @@
     </div>  
     <div class="actions "><%= f.submit "検索",class:"btn-info" %></div>
   </div>
-  
 <% end %>
+
   <div class="col-sm-8 offset-sm-2" >
     <h2>検索結果：<%= @articles.total_count%>件</h2>
 　</div>
+
 <% @articles.each do |article| %>
   <div class="card col-sm-8 offset-sm-2" >
     <div class="card-body">
@@ -41,5 +42,7 @@
   </div>
 <% end %>
 
-<!--中央に配置すること-->
-<%= paginate @articles %>
+  <!--中央に配置すること-->
+  <div class="text-center">
+    <%= paginate (@articles) ,class: "justify-content-center"%>
+  </div>
