@@ -11,6 +11,15 @@ module FreeWifiCafe
   class Application < Rails::Application
     config.i18n.default_locale = :ja
     
+    # config.load_defaults 5.1
+    
+    config.generators do |g|
+      g.test_framework :rspec,
+      fixtures: false,
+      view_specs: false,
+      helper_specs: false,
+      routing_specs: false
+    end
     # unless Rails.env.production?
     #   config.web_console.whitelisted_ips = '106.171.53.249'
     # end
