@@ -7,13 +7,13 @@ class CommentsController < ApplicationController
     @article = Article.find(params[:article_id])
     @comment = @article.comments.build(comment_params) #親モデルに対する外部参照キー(article_id)を自動でセット
     @comment.user = current_user
-    # logger.debug @comment.inspect
     @comment.title = "無題" if @comment.title.nil? || @comment.title.blank?
     if @comment.save
-      # logger.debug @comment.errors.inspect
       redirect_to article_path(@article)
+      flash[:notice] = "コメントが投稿されました。"
     else
-      render :"articles/new"
+      redirect_to article_path(@article)
+      flash[:alert] = "内容を入力してください。"
     end
   end
   
@@ -23,6 +23,10 @@ class CommentsController < ApplicationController
     @comment = @article.comments.find(params[:id])
     if @comment.destroy
       redirect_to article_path(@article)
+      flash[:notice] = "コメントを削除しました。"
+    else
+      redirect_to article_path(@article)
+      flash[:alert] = "コメントの削除に失敗しました。"
     end
   end
   
@@ -32,7 +36,8 @@ class CommentsController < ApplicationController
     end
     
     def admin_user
-      redirect_to(root_url) if current_user.nil? || !current_user.admin?
-      # logger.debug current_user.errors.inspect 
+      if current_user.nil? || !current_user.admin?
+      redirect_to root_url ,alert:'権限がないためアクセスできません。'
+      end
     end
 end
