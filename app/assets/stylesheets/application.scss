@@ -20,7 +20,7 @@ body {
 }
 
 // フラッシュメッセージ
-.alert {
+.alert,#error_explanation {
   background-color: #f2dede;
   border-color: #eed3d7;
   color: #b94a48;
