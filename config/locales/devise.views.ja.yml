@@ -27,6 +27,8 @@ ja:
         unconfirmed_email: 未確認Eメール
         unlock_token: ロック解除用トークン
         updated_at: 更新日
+      article:
+        store_name: 店名
     models:
       user: ユーザ
     errors:
@@ -70,6 +72,8 @@ ja:
           attributes:
             user: 
               required: ""
+            store_name:
+              blank: "が入力されていません。"
   devise:
     confirmations:
       confirmed: アカウントを登録しました。
