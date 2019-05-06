@@ -64,6 +64,7 @@ GEM
       activemodel (>= 4.0.0)
       activesupport (>= 4.0.0)
       mime-types (>= 1.16)
+    cliver (0.3.2)
     coffee-rails (4.2.2)
       coffee-script (>= 2.2.0)
       railties (>= 4.0.0)
@@ -181,6 +182,10 @@ GEM
     nokogiri (1.10.2)
       mini_portile2 (~> 2.4.0)
     orm_adapter (0.5.0)
+    poltergeist (1.18.1)
+      capybara (>= 2.1, < 4)
+      cliver (~> 0.3.1)
+      websocket-driver (>= 0.2.0)
     popper_js (1.14.5)
     public_suffix (3.0.3)
     puma (3.12.1)
@@ -343,6 +348,7 @@ DEPENDENCIES
   listen (~> 3.0.5)
   mysql2 (>= 0.3.18, < 0.5)
   nokogiri
+  poltergeist
   puma (~> 3.0)
   rails (~> 5.0.0)
   rails_admin (~> 1.3)
