@@ -34,6 +34,8 @@ group :development, :test do
   gem 'rspec-rails', '~> 3.6.0'
   gem "factory_bot_rails", "~> 4.10.0"
   gem 'spring-commands-rspec'
+  gem 'launchy', '~> 2.4.3'
+  gem 'capybara', '~> 2.15.2'
 end
 
 
