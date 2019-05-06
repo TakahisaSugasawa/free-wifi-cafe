@@ -49,6 +49,8 @@ ja:
               user_not_working_for: "ユーザが所属していない会社です"
             current_password:
               blank: "が入力されていません。"
+            username:
+              blank: "が入力されていません。"
             email:
               taken: "は既に使用されています。"
               blank: "が入力されていません。"
