@@ -27,15 +27,14 @@ gem 'nokogiri' #スクレイピング
 gem 'activerecord-reset-pk-sequence' #idをリセットして1から始まるようにする
 gem 'seed-fu', '~> 2.3' #データの重複登録を防ぐ
 gem 'font-awesome-rails'
-
+gem 'spring-commands-rspec' #アプリケーションの起動時間を早くする
 
 group :development, :test do
   gem 'byebug', platform: :mri
   gem 'rspec-rails', '~> 3.6.0'
   gem "factory_bot_rails", "~> 4.10.0"
-  gem 'spring-commands-rspec'
-  gem 'launchy', '~> 2.4.3'
   gem 'capybara', '~> 2.15.2'
+  # gem 'launchy', '~> 2.4.3'
   gem 'poltergeist'
 end
 
