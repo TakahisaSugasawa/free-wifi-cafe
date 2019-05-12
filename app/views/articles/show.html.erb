@@ -20,10 +20,6 @@
             <td><%= @city.name %></td>
         </tr>
         <tr>
-            <th>最寄駅</th>
-            <td><%= @article.station %></td>
-        </tr>
-        <tr>
             <th>アクセス</th>
             <td><%= simple_format @article.access %></td>
         </tr>
@@ -68,6 +64,7 @@
   <% if !user_signed_in?%>
     <p><%= button_to "会員登録して口コミを見る！", new_user_registration_path,class:'btn btn-primary mx-auto d-block',method: :get%></p>
   <% else%>
+    <h3 class="border-bottom">口コミ一覧</h3>
     <%= render @article.comments%>
     <!--render partial: "comments/comment", collection: @article.comments-->
   <% end%>
