@@ -1,7 +1,7 @@
 FactoryBot.define do
   factory :article do
-    # store_name  "テスト"
-    sequence(:store_name) {|n|"テストカフェ#{n}"}
+    store_name  "テストカフェ"
+    # sequence(:store_name) {|n|"テストカフェ#{n}"}
     adress "住所１"
     access "住所１より徒歩５分"
     wifi "あり"

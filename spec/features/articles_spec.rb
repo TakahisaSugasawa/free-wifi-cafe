@@ -2,7 +2,6 @@ require 'rails_helper'
 
 
 RSpec.feature "記事管理機能", type: :feature do
-  
   describe '記事投稿機能' do
     before do
       # user_admin =
@@ -198,7 +197,7 @@ RSpec.feature "記事管理機能", type: :feature do
         click_button '更新する'
       end
       
-      it 'フラッシュメッセージ「記事の更新に失敗しました。」と表示される'do 
+      it 'フラッシュメッセージ「記事の更新に失敗しました。」と表示される' do 
         expect(page).to have_selector '.alert',
         text:'記事の更新に失敗しました。'
         save_and_open_page
@@ -223,9 +222,18 @@ RSpec.feature "記事管理機能", type: :feature do
     context '記事を削除する'do 
       before do
         visit articles_path
-        click_link '削除'
+        click_link '削除', href: article_path(@article)
       end
-      it do 
+      it 'フラッシュメッセージに「記事を削除しました」と表示される'do 
+        expect(page).to have_selector '.notice',
+        text:'記事を削除しました。'
+        save_and_open_page
+      end
+      it '記事一覧画面から該当の記事が削除されている'do 
+        expect(page).to have_no_link 'テストカフェ'
+        save_and_open_page
+      end
+      it '記事表示件数が１件減っている'do 
       
       end
     end
