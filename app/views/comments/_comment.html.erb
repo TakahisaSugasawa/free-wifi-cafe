@@ -6,6 +6,7 @@
     </p>
     <h6 class="card-title mb-2"><%= comment.title %></h6>
       <p class="card-text"><%= simple_format comment.content %></p>
+      <p class="card-text">投稿日：<%= comment.created_at %></p>
     <% if current_user.admin? %>
       <p>
         <%= link_to '削除', [comment.article, comment],
