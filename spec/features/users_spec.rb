@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 
-RSpec.feature "デバイス機能", type: :feature do
+RSpec.feature 'デバイス機能', type: :feature do
   describe 'ユーザー登録機能 ' do
     context '入力内容に不備がない場合' do
       before do
