@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.feature "コメント管理機能", type: :feature do
+RSpec.feature 'コメント管理機能', type: :feature do
   describe 'コメント投稿機能'do
     before do
       user_admin = FactoryBot.create(:admin)
@@ -28,6 +28,10 @@ RSpec.feature "コメント管理機能", type: :feature do
         expect(page).to have_content 'テストコメント'
         save_and_open_page
       end
+      it 'コメント登録件数が１件増える' do 
+        expect(Comment.count).to eq 1
+        save_and_open_page
+      end
     end
     
     context '内容（context）が入力されていない場合'do 
@@ -44,6 +48,10 @@ RSpec.feature "コメント管理機能", type: :feature do
       end
       it '記事内に投稿したコメントが表示されない' do 
         expect(page).to have_no_content 'テストコメント'
+        save_and_open_page
+      end
+      it 'コメント登録件数が0件' do 
+        expect(Comment.count).to eq 0
         save_and_open_page
       end
     end
@@ -70,6 +78,10 @@ RSpec.feature "コメント管理機能", type: :feature do
       
       it '記事内からコメント(テストコメント)が削除される'do
         expect(page).to have_no_content'テストコメント'
+        save_and_open_page
+      end
+      it 'コメント登録件数が0件' do 
+        expect(Comment.count).to eq 0
         save_and_open_page
       end
     end
