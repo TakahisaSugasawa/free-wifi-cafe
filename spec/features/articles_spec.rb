@@ -2,19 +2,40 @@ require 'rails_helper'
 
 
 RSpec.feature "記事管理機能", type: :feature do
+  let(:user_admin)  { FactoryBot.create(:admin) }
+  # let(:user_general)  { FactoryBot.create(:user) }
+  let(:login_user)  { user_admin }
+  # let(:login_user)  { user_general }
+  let(:article) { FactoryBot.create(:article,user: user_admin) }
+  
+  
+  # before do
+      # 管理者でログインする
+      # visit new_user_session_path
+      # fill_in 'Eメール',with: login_user.email
+      # fill_in 'パスワード',with: login_user.password
+      # click_button 'ログインする'
+      # FactoryBot.create(:article,user: user_admin)
+  # end
+  
   describe '記事投稿機能' do
+    
     before do
-      # user_admin =
-      FactoryBot.create(:admin)
       # 管理者でログインする
       visit new_user_session_path
-      fill_in 'Eメール',with: 'admin@example.com'
-      fill_in 'パスワード',with: '123456'
+      fill_in 'Eメール',with: login_user.email
+      fill_in 'パスワード',with: login_user.password
       click_button 'ログインする'
-      # FactoryBot.create(:article,user: user_admin)
+      # 管理者でログインする
+      # visit new_user_session_path
+      # fill_in 'Eメール',with: login_user.email
+      # fill_in 'パスワード',with: login_user.password
+      # click_button 'ログインする'
+      # # FactoryBot.create(:article,user: user_admin)
     end
     
     context "管理者権限で記事を入力" do
+      
       before do
         visit new_article_path
         fill_in '店名',with: 'テストカフェ'
@@ -28,38 +49,68 @@ RSpec.feature "記事管理機能", type: :feature do
         fill_in '電話番号',with: '03-xxxx-xxxx'
         fill_in 'URL',with: 'test.com'
         click_button '登録する'
+        visit articles_path
       end
       
-      it '記事一覧ページで投稿した記事が表示される',open_on_error: true do
-        visit articles_path
-        expect(page).to have_content '検索結果：1件'
+      it '記事が1つ増える'do
+        # expect(page).to have_content '検索結果：1件'
         # 検索結果数が1つ増えたことで投稿が成功したと表現したい
+        expect(Article.count).to eq 1
         save_and_open_page
       end
     end
   end
   
-  describe '一覧表示機能' do
+  describe '記事一覧表示機能' do
     before do
       # ユーザーAを作成しておく
-      user_admin =FactoryBot.create(:admin)
-      FactoryBot.create(:user)
+      # user_admin =FactoryBot.create(:admin)
+      # FactoryBot.create(:user)
+      # 管理者でログインする
+      # visit new_user_session_path
+      # fill_in 'Eメール',with: login_user.email
+      # fill_in 'パスワード',with: login_user.password
+      # click_button 'ログインする'
       FactoryBot.create(:article,user: user_admin)
+      FactoryBot.create(:user)
+    end
+    
+    shared_examples_for '詳細リンクが表示される' do
+      it { 
+        expect(page).to have_content '詳細'
+        save_and_open_page
+      }
     end
     
     context '管理者が記事一覧表示画面にアクセスした時' do
       before do
         # 管理者でログインする
+        # visit new_user_session_path
+        # fill_in 'Eメール',with: 'admin@example.com'
+        # fill_in 'パスワード',with: '123456'
+        # click_button 'ログインする'
+        # 管理者でログインする
         visit new_user_session_path
-        fill_in 'Eメール',with: 'admin@example.com'
-        fill_in 'パスワード',with: '123456'
+        fill_in 'Eメール',with: login_user.email
+        fill_in 'パスワード',with: login_user.password
         click_button 'ログインする'
+        # FactoryBot.create(:article,user: user_admin)
+        visit articles_path
       end
       
-      it '詳細・編集・削除リンクとお気に入り数が表示される',open_on_error: true do
-        visit articles_path
-        expect(page).to have_content '詳細'
+      # it '詳細リンクが表示される' do
+      #   expect(page).to have_content '詳細'
+      #   save_and_open_page
+      # end
+      
+      it_behaves_like '詳細リンクが表示される'
+      
+      it '編集リンクが表示される' do
         expect(page).to have_content '編集'
+        save_and_open_page
+      end
+      
+      it '削除リンクが表示される' do
         expect(page).to have_content '削除'
         save_and_open_page
       end
@@ -72,52 +123,74 @@ RSpec.feature "記事管理機能", type: :feature do
         fill_in 'Eメール',with: 'tester@example.com'
         fill_in 'パスワード',with: '123456'
         click_button 'ログインする'
+        visit articles_path
       end
       
-      it '詳細リンクとお気に入り数が表示される',open_on_error: true do
-        # 作成済みの記事の名称が画面上に表示されていることを確認
-        visit articles_path
-        expect(page).to have_content '詳細'
-        # expect(page).to have_content ''
-      end
+      it_behaves_like '詳細リンクが表示される'
+      # it '詳細リンクが表示される',open_on_error: true do
+      #   # 作成済みの記事の名称が画面上に表示されていることを確認
+      #   expect(page).to have_content '詳細'
+      # end
+      
     end
     
     context 'ログインしていない一般ユーザが記事一覧表示画面にアクセスした時' do
-      
-      it '削除リンクのみ表示される',open_on_error: true do
-        # 作成済みの記事の名称が画面上に表示されていることを確認
+      before do
         visit articles_path
-        expect(page).to have_content '詳細'
       end
+      
+      
+      it_behaves_like '詳細リンクが表示される'
+      # it '詳細リンクのみ表示される',open_on_error: true do
+      #   # 作成済みの記事の名称が画面上に表示されていることを確認
+      #   expect(page).to have_content '詳細'
+      # end
     end
   end
   
   describe '記事詳細機能'do 
     before do
-      user_admin =FactoryBot.create(:admin)
+      # user_admin =FactoryBot.create(:admin)
       FactoryBot.create(:user)
-      @article = FactoryBot.create(:article,user: user_admin)
+      # @article = FactoryBot.create(:article,user: user_admin)
+    end
+    
+    shared_examples_for 'コメント入力フォームが表示される' do
+      it {
+        expect(page).to have_selector '.new_comment'
+        save_and_open_page
+      }
+    end
+    
+    shared_examples_for 'いいねボタンが表示される' do
+      it {
+        expect(page).to have_selector 'form button span',
+        text: 'お気に入りに追加する'
+      }
     end
     
     context '管理者が記事詳細画面にアクセスした時' do
       before do
         # 管理者でログインする
         visit new_user_session_path
-        fill_in 'Eメール',with: 'admin@example.com'
-        fill_in 'パスワード',with: '123456'
+        fill_in 'Eメール',with: login_user.email
+        fill_in 'パスワード',with: login_user.password
         click_button 'ログインする'
-        visit  article_path(@article)
+        visit  article_path(article)
       end
       
-      it 'コメント入力フォームが表示される'do
-        expect(page).to have_selector '.new_comment'
-        save_and_open_page
-      end
+      # it 'コメント入力フォームが表示される'do
+      #   expect(page).to have_selector '.new_comment'
+      #   save_and_open_page
+      # end
+      it_behaves_like 'コメント入力フォームが表示される'
       
-      it 'いいねボタンが表示される'do
-        expect(page).to have_selector 'form button span',
-        text: 'お気に入りに追加する'
-      end
+      it_behaves_like 'いいねボタンが表示される'
+      
+      # it 'いいねボタンが表示される'do
+      #   expect(page).to have_selector 'form button span',
+      #   text: 'お気に入りに追加する'
+      # end
     end
     
     context 'ログイン済みの一般ユーザーが記事詳細画面にアクセスした時' do
@@ -127,23 +200,25 @@ RSpec.feature "記事管理機能", type: :feature do
         fill_in 'Eメール',with: 'tester@example.com'
         fill_in 'パスワード',with: '123456'
         click_button 'ログインする'
-        visit  article_path(@article)
+        visit  article_path(article)
       end
       
-      it 'コメント入力フォームが表示される'do
-        expect(page).to have_selector '.new_comment'
-        save_and_open_page
-      end
+      it_behaves_like 'コメント入力フォームが表示される'
+      # it 'コメント入力フォームが表示される'do
+      #   expect(page).to have_selector '.new_comment'
+      #   save_and_open_page
+      # end
       
-      it 'いいねボタンが表示される'do
-        expect(page).to have_selector 'form button span',
-        text: 'お気に入りに追加する'
-      end
+      it_behaves_like 'いいねボタンが表示される'
+      # it 'いいねボタンが表示される'do
+      #   expect(page).to have_selector 'form button span',
+      #   text: 'お気に入りに追加する'
+      # end
     end
     
     context 'ログインしていない一般ユーザが記事一覧表示画面にアクセスした時' do
       before do
-        visit  article_path(@article)
+        visit  article_path(article)
       end
       
       it 'コメント入力フォームが表示されない' do
@@ -165,17 +240,17 @@ RSpec.feature "記事管理機能", type: :feature do
   
   describe '記事編集機能'do
     before do
-      user_admin =FactoryBot.create(:admin)
-      @article = FactoryBot.create(:article,user: user_admin)
+      # user_admin =FactoryBot.create(:admin)
+      # @article = FactoryBot.create(:article,user: user_admin)
       visit new_user_session_path
-      fill_in 'Eメール',with: 'admin@example.com'
-      fill_in 'パスワード',with: '123456'
+      fill_in 'Eメール',with: login_user.email
+      fill_in 'パスワード',with: login_user.password
       click_button 'ログインする'
     end
     
     context '店名に値が入力されている場合'do 
       before do
-        visit edit_article_path(@article)
+        visit edit_article_path(article)
         fill_in '店名',with: 'テストショップ'
         click_button '更新する'
       end
@@ -192,7 +267,7 @@ RSpec.feature "記事管理機能", type: :feature do
     
     context '店名が空の場合'do 
       before do
-        visit edit_article_path(@article)
+        visit edit_article_path(article)
         fill_in '店名',with: ''
         click_button '更新する'
       end
@@ -203,7 +278,8 @@ RSpec.feature "記事管理機能", type: :feature do
         save_and_open_page
       end
       it '店名が更新されず、既存の店名（テストカフェ）のままでいる'do 
-        expect(page).to have_content 'テストカフェ'
+        # expect(page).to have_content 'テストカフェ'
+        expect(page).to have_field '店名', with: 'テストカフェ'
         save_and_open_page
       end
     end
@@ -211,11 +287,11 @@ RSpec.feature "記事管理機能", type: :feature do
   
   describe '記事削除機能'do
     before do
-      user_admin =FactoryBot.create(:admin)
+      # user_admin =FactoryBot.create(:admin)
       @article = FactoryBot.create(:article,user: user_admin)
       visit new_user_session_path
-      fill_in 'Eメール',with: 'admin@example.com'
-      fill_in 'パスワード',with: '123456'
+      fill_in 'Eメール',with: login_user.email
+      fill_in 'パスワード',with: login_user.password
       click_button 'ログインする'
     end
     
@@ -233,8 +309,9 @@ RSpec.feature "記事管理機能", type: :feature do
         expect(page).to have_no_link 'テストカフェ'
         save_and_open_page
       end
-      it '記事表示件数が１件減っている'do 
       
+      it '記事表示件数が0件減っている'do 
+        expect(Article.count).to eq 0 
       end
     end
   end

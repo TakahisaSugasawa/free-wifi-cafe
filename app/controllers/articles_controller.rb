@@ -77,7 +77,7 @@ class ArticlesController < ApplicationController
   private
     def article_params
       params.require(:article).permit(:store_name, :adress, :access,:city_id,
-      :station, :access, :wifi, :plug, :business_hours,
+       :access, :wifi, :plug, :business_hours,
       :regular_holiday, :phone, :url, :image, :image_cache, :remove_image)
     end
     
