@@ -1,10 +1,10 @@
-<div class="border-bottom ">
-  <div class="comment-body ">
+<div class="border-bottom">
+  <div class="comment-body">
     <p class="comment-username">
       <%= image_tag comment.user.image.thumb40.url %>
       <%= link_to "#{comment.user.username}",user_path(comment.user)%>
     </p>
-    <h6 class="card-title mb-2 text-muted"><%= comment.title %></h6>
+    <h6 class="card-title mb-2"><%= comment.title %></h6>
       <p class="card-text"><%= simple_format comment.content %></p>
     <% if current_user.admin? %>
       <p>

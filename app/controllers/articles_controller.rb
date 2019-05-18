@@ -85,6 +85,5 @@ class ArticlesController < ApplicationController
       if current_user.nil? || !current_user.admin?
         redirect_to root_url , alert:'権限がないためアクセスできません。'
       end
-      # logger.debug current_user.errors.inspect 
     end
 end
