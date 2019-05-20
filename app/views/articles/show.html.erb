@@ -45,7 +45,7 @@
         </tr>
         <tr>
             <th>URL</th>
-            <td><%= link_to simple_format @article.url unless @article.url.nil?%></td>
+            <td><%= link_to @article.url,@article.url unless @article.url.nil?%></td>
         </tr>
         <tr>
             <th>地図</th>
