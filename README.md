@@ -1,5 +1,6 @@
-# Cafe-with-FreeWifi
-東京都内でフリーWi-Fiのあるお店をまとめたログイン制のサイト 
+# free-wifi-cafe
+東京都内でフリーWi-Fiのあるお店をまとめたログイン制のサイト
+https://free-wifi-cafe.herokuapp.com/
 
 # 機能と使用技術
 - ユーザー登録・編集・削除・ログイン・ログアウト機能（devise）
