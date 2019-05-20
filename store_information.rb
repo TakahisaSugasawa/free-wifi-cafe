@@ -133,7 +133,7 @@ CSV.open("store_information.csv", "w") do |csv|
     regular_holiday = doc.css('#middlecolumn > article:nth-child(7) > table > tr:nth-child(6) > td').text
     url = doc.css('#middlecolumn > article:nth-child(7) > table > tr:nth-child(7) > td').text
     phone = doc.css('#middlecolumn > article:nth-child(7) > table > tr:nth-child(4) > td').text
-    user_id = '２'
+    user_id = '2'
     city_id = '22'
     
     csv << [store_name,adress,access,wifi,plug,business_hours,
@@ -1971,9 +1971,8 @@ CSV.open("store_information.csv", "w") do |csv|
   
   #西東京市
   urls = [
-    'https://dengen-cafe.com/archives/26532.html',
-    'https://dengen-cafe.com/archives/25339.html',
-    'https://dengen-cafe.com/archives/25324.html',
+    'https://dengen-cafe.com/archives/22565.html',
+    'https://dengen-cafe.com/archives/21739.html'
     ]
   # url = 'https://dengen-cafe.com/archives/20909.html'
   
