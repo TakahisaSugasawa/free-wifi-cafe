@@ -7,7 +7,6 @@ RSpec.feature 'コメント管理機能', type: :feature do
   
   describe 'コメント投稿機能'do
     before do
-      # @article = FactoryBot.create(:article,user: user_admin)
       # 管理者でログインする
       visit new_user_session_path
       fill_in 'Eメール',with: user_admin.email

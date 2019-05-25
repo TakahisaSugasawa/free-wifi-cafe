@@ -13,12 +13,12 @@ gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.2'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 gem "bootstrap", ">= 4.3.1"
-gem 'jquery-rails' #
+gem 'jquery-rails' 
 gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.5'
 gem 'bcrypt', '~> 3.1.7'
 gem 'rails_admin', '~> 1.3' #管理者権限
-gem 'cancancan', '~> 2.0'
+gem 'cancancan', '~> 2.0' #管理者権限
 gem 'carrierwave' #画像アップロード昨日
 gem 'rmagick' #画像の大きさを調整
 gem 'ransack' #検索フォーム
