@@ -13,6 +13,10 @@ RSpec.describe Comment, type: :model do
       it 'コメント投稿に失敗する'do
         expect(@comment.errors.full_messages).to include("内容 が入力されていません。")
       end
+      
+      it 'コメント登録件数が0件' do 
+        expect(Comment.count).to eq 0
+      end
     end
   end
   
