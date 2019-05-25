@@ -1,17 +1,16 @@
 require 'rails_helper'
 
-
 RSpec.feature '記事管理機能', type: :feature do
   let(:user_admin)  { FactoryBot.create(:admin) }
-  let(:login_user)  { user_admin }
+  let(:user)  { FactoryBot.create(:user) }
   let(:article) { FactoryBot.create(:article,user: user_admin) }
   
   describe '記事投稿機能' do
     
     before do
       visit new_user_session_path
-      fill_in 'Eメール',with: login_user.email
-      fill_in 'パスワード',with: login_user.password
+      fill_in 'Eメール',with: user_admin.email
+      fill_in 'パスワード',with: user_admin.password
       click_button 'ログインする'
     end
     
@@ -42,7 +41,6 @@ RSpec.feature '記事管理機能', type: :feature do
   describe '記事一覧表示機能' do
     before do
       FactoryBot.create(:article,user: user_admin)
-      FactoryBot.create(:user)
     end
     
     shared_examples_for '詳細リンクが表示される' do
@@ -56,8 +54,8 @@ RSpec.feature '記事管理機能', type: :feature do
       before do
         # 管理者でログインする
         visit new_user_session_path
-        fill_in 'Eメール',with: login_user.email
-        fill_in 'パスワード',with: login_user.password
+        fill_in 'Eメール',with: user_admin.email
+        fill_in 'パスワード',with: user_admin.password
         click_button 'ログインする'
         visit articles_path
       end
@@ -100,9 +98,6 @@ RSpec.feature '記事管理機能', type: :feature do
   end
   
   describe '記事詳細機能'do 
-    before do
-      FactoryBot.create(:user)
-    end
     
     shared_examples_for 'コメント入力フォームが表示される' do
       it {
@@ -122,8 +117,8 @@ RSpec.feature '記事管理機能', type: :feature do
       before do
         # 管理者でログインする
         visit new_user_session_path
-        fill_in 'Eメール',with: login_user.email
-        fill_in 'パスワード',with: login_user.password
+        fill_in 'Eメール',with: user_admin.email
+        fill_in 'パスワード',with: user_admin.password
         click_button 'ログインする'
         visit  article_path(article)
       end
@@ -138,8 +133,8 @@ RSpec.feature '記事管理機能', type: :feature do
       before do
         # 一般ユーザーでログインする
         visit new_user_session_path
-        fill_in 'Eメール',with: 'tester@example.com'
-        fill_in 'パスワード',with: '123456'
+        fill_in 'Eメール',with: user.email
+        fill_in 'パスワード',with: user.password
         click_button 'ログインする'
         visit  article_path(article)
       end
@@ -175,8 +170,8 @@ RSpec.feature '記事管理機能', type: :feature do
   describe '記事編集機能'do
     before do
       visit new_user_session_path
-      fill_in 'Eメール',with: login_user.email
-      fill_in 'パスワード',with: login_user.password
+      fill_in 'Eメール',with: user_admin.email
+      fill_in 'パスワード',with: user_admin.password
       click_button 'ログインする'
     end
     
@@ -220,8 +215,8 @@ RSpec.feature '記事管理機能', type: :feature do
     before do
       @article = FactoryBot.create(:article,user: user_admin)
       visit new_user_session_path
-      fill_in 'Eメール',with: login_user.email
-      fill_in 'パスワード',with: login_user.password
+      fill_in 'Eメール',with: user_admin.email
+      fill_in 'パスワード',with: user_admin.password
       click_button 'ログインする'
     end
     
