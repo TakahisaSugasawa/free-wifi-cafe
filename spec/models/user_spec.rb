@@ -59,26 +59,20 @@ RSpec.describe 'デバイス機能',User, type: :model do
         @user.valid?
       end
       it 'ユーザー登録に成功する'do 
-           expect(@user).to be_valid
+        expect(@user).to be_valid
       end
     end
   end
  
-# describe 'ユーザー編集機能'do
-#     before do
-#       @user = FactoryBot.create(:user)
-#     end
-    
-#     context 'パスワードが入力されていない場合'do 
-#       before do
-#         @user.update()
-#       end
-#       it do 
-      
-#       end
-#     end
-#   end
- 
+  describe 'ユーザー削除機能' do
+    before do
+      @user = FactoryBot.create(:user)
+      @user.destroy
+    end
+    it '登録件数が0のまま' do 
+      expect(User.count).to eq 0
+    end
+  end
 end
 
 
