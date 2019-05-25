@@ -29,6 +29,8 @@ ja:
         updated_at: 更新日
       article:
         store_name: 店名
+      comment:
+        content: 内容
     models:
       user: ユーザ
     errors:
@@ -73,6 +75,10 @@ ja:
             user: 
               required: ""
             store_name:
+              blank: "が入力されていません。"
+        comment:
+          attributes:
+            content:
               blank: "が入力されていません。"
   devise:
     confirmations:
