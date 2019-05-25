@@ -1,12 +1,12 @@
 <% if user_signed_in? %>
   <% if article.favorite_user(current_user.id) %>
-    <%= button_to article_favorite_path(article, favorite), method: :delete, remote: true,class:'btn btn-success mx-auto d-block' do %>
+    <%= button_to article_favorite_path(article, favorite), method: :delete, remote: true,class:'btn btn-success mx-auto d-block unfavorite' do %>
       <span>
         お気に入りを外す
       </span>
     <% end %>
   <% else %>
-    <%= button_to article_favorites_path(article), remote: true,class:'btn btn-outline-success mx-auto d-block' do %>
+    <%= button_to article_favorites_path(article), remote: true,class:'btn btn-outline-success mx-auto d-block favorite' do %>
       <span>
          お気に入りに追加する
       </span>
