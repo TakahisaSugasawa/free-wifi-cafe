@@ -1,5 +1,6 @@
 # free-wifi-cafe
 東京都内でフリーWi-Fiを使用できるお店をまとめたログイン制のサイト</br>
+気になったお店をお気に入り登録したり、口コミを投稿・閲覧することができます</br>
 https://free-wifi-cafe.herokuapp.com/
 
 # 機能と使用技術
