@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :article do
-    store_name  "テストカフェ"
+    store_name "テストカフェ"
     adress "住所１"
     access "住所１より徒歩５分"
     wifi "あり"
@@ -10,6 +10,6 @@ FactoryBot.define do
     phone "03-xxxx-xxxx"
     url "test.com"
     city_id "1"
-    association :user , factory: :admin
+    association :user, factory: :admin
   end
 end

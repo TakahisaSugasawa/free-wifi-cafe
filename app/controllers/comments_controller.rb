@@ -1,8 +1,8 @@
 class CommentsController < ApplicationController
   before_action :authenticate_user!
   before_action :admin_user, only: [:destroy]
-    
-  #POST /articles/:article_id/comments 
+
+  #POST /articles/:article_id/comments
   def create
     @article = Article.find(params[:article_id])
     @comment = @article.comments.build(comment_params) #親モデルに対する外部参照キー(article_id)を自動でセット
@@ -16,7 +16,7 @@ class CommentsController < ApplicationController
       flash[:alert] = "内容を入力してください。"
     end
   end
-  
+
   # DELETE /articles/:article_id/comments/:id
   def destroy
     @article = Article.find(params[:article_id])
@@ -29,15 +29,16 @@ class CommentsController < ApplicationController
       flash[:alert] = "コメントの削除に失敗しました。"
     end
   end
-  
+
   private
-    def comment_params
-      params.require(:comment).permit(:title,:content)
+
+  def comment_params
+    params.require(:comment).permit(:title, :content)
+  end
+
+  def admin_user
+    if current_user.nil? || !current_user.admin?
+      redirect_to root_url, alert: "権限がないためアクセスできません。"
     end
-    
-    def admin_user
-      if current_user.nil? || !current_user.admin?
-      redirect_to root_url ,alert:'権限がないためアクセスできません。'
-      end
-    end
+  end
 end

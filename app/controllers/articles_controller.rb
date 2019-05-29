@@ -1,12 +1,12 @@
 class ArticlesController < ApplicationController
   # 管理者のみ投稿・編集・削除することができる
-  before_action :admin_user, only: [:new,:create,:edit,:update,:destroy]
-  
+  before_action :admin_user, only: [:new, :create, :edit, :update, :destroy]
+
   # get /articles/new
   def new
-      @article = Article.new
+    @article = Article.new
   end
-  
+
   # post /articles
   def create
     @article = Article.new(article_params)
@@ -19,7 +19,7 @@ class ArticlesController < ApplicationController
       flash[:alert] = "投稿に失敗しました。"
     end
   end
-  
+
   # get /article/:id
   def show
     @article = Article.find(params[:id])
@@ -27,7 +27,7 @@ class ArticlesController < ApplicationController
     @comment = Comment.new #コメント投稿フォーム用に空のオブジェクトを作成
     @favorite = Favorite.find_by(user_id: current_user.id, article_id: params[:id]) if user_signed_in?
   end
-  
+
   # get /articles
   def index
     # 複数の単語を複数のカラムに対して検索
@@ -43,13 +43,13 @@ class ArticlesController < ApplicationController
     # 検索結果
     @articles = @search.result.page(params[:page]).per(10)
   end
-  
+
   # get /artcles/:id/edit
   def edit
     @article = Article.find(params[:id])
     @city = City.find(@article.city_id) #登録されたcity_idを元にCityオブジェクトを検索
   end
-  
+
   # patch /artcles/:id
   def update
     @article = Article.find(params[:id])
@@ -59,9 +59,9 @@ class ArticlesController < ApplicationController
     else
       redirect_to edit_article_path(@article)
       flash[:alert] = "記事の更新に失敗しました。"
-    end    
+    end
   end
-  
+
   def destroy
     @article = Article.find(params[:id])
     if @article.destroy
@@ -72,18 +72,19 @@ class ArticlesController < ApplicationController
       flash[:alert] = "記事の削除に失敗しました。"
     end
   end
-  
+
   #ストロングパラメータで指定したキーの値を受け取ることを許可
   private
-    def article_params
-      params.require(:article).permit(:store_name, :adress, :access,:city_id,
-       :access, :wifi, :plug, :business_hours,
-      :regular_holiday, :phone, :url, :image, :image_cache, :remove_image)
+
+  def article_params
+    params.require(:article).permit(:store_name, :adress, :access, :city_id,
+                                    :access, :wifi, :plug, :business_hours,
+                                    :regular_holiday, :phone, :url, :image, :image_cache, :remove_image)
+  end
+
+  def admin_user
+    if current_user.nil? || !current_user.admin?
+      redirect_to root_url, alert: "権限がないためアクセスできません。"
     end
-    
-    def admin_user
-      if current_user.nil? || !current_user.admin?
-        redirect_to root_url , alert:'権限がないためアクセスできません。'
-      end
-    end
+  end
 end
