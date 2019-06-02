@@ -119,12 +119,12 @@ RSpec.feature 'デバイス機能', type: :feature do
       #   expect(@test_user.reload.self_introduction).to eq 'よろしくお願いします。'
       #   save_and_open_page
       # end
-      
+
       # it "マイページ（ユーザー詳細画面）にリダイレクトすること" do
       # expect(response).to redirect_to user_path(@test_user)
       # save_and_open_page
       # end
-      
+
       it 'ユーザー名が更新される' do
         expect(page).to have_content @test_user.reload.username
         save_and_open_page
