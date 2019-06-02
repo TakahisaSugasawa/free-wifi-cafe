@@ -1,5 +1,8 @@
 <% provide(:title, "詳細") %>
 
+<span id="article-<%= @article.id %>-favorite">
+  <%= render 'shared/favorites', article: @article, favorite: @favorite %>
+</span>
 <div class="col-md-6 offset-md-3 mypage">
   <table class="table table-hover">
     <tbody>
@@ -58,9 +61,6 @@
         </tr>
     </tbody>
   </table>
-  <span id="article-<%= @article.id %>-favorite">
-    <%= render 'shared/favorites', article: @article, favorite: @favorite %>
-  </span>
   <% if !user_signed_in?%>
     <p><%= button_to "会員登録して口コミを見る！", new_user_registration_path,class:'btn btn-primary mx-auto d-block',method: :get%></p>
   <% else%>
