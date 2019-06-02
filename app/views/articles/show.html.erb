@@ -65,10 +65,10 @@
     <p><%= button_to "会員登録して口コミを見る！", new_user_registration_path,class:'btn btn-primary mx-auto d-block',method: :get%></p>
   <% else%>
     <h3 class="border-bottom">口コミ一覧</h3>
-    <%= render @article.comments.page(params[:page]).per(3).order('created_at DESC') %>
+    <%= render @article.comments.page(params[:page]).per(10).order('created_at DESC') %>
     <!--render partial: "comments/comment", collection: @article.comments-->
     <div class="text-center">
-        <%= paginate (@article.comments.page(params[:page]).per(3).order('created_at DESC')) ,class: "justify-content-center"%>
+        <%= paginate (@article.comments.page(params[:page]).per(10).order('created_at DESC')) ,class: "justify-content-center"%>
     </div>
   <% end%>
 </div>
