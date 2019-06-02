@@ -105,18 +105,38 @@ RSpec.feature 'デバイス機能', type: :feature do
         click_button '更新する'
       end
 
+      # it 'ユーザー名が更新される' do
+      #   expect(@test_user.reload.username).to eq 'sugasawa'
+      #   save_and_open_page
+      # end
+
+      # it 'メールアドレスが更新される' do
+      #   expect(@test_user.reload.email).to eq 'test_update@example.com'
+      #   save_and_open_page
+      # end
+
+      # it '自己紹介が更新される' do
+      #   expect(@test_user.reload.self_introduction).to eq 'よろしくお願いします。'
+      #   save_and_open_page
+      # end
+      
+      # it "マイページ（ユーザー詳細画面）にリダイレクトすること" do
+      # expect(response).to redirect_to user_path(@test_user)
+      # save_and_open_page
+      # end
+      
       it 'ユーザー名が更新される' do
-        expect(@test_user.reload.username).to eq 'sugasawa'
+        expect(page).to have_content @test_user.reload.username
         save_and_open_page
       end
 
       it 'メールアドレスが更新される' do
-        expect(@test_user.reload.email).to eq 'test_update@example.com'
+        expect(@test_user.reload.email).to eq @test_user.reload.email
         save_and_open_page
       end
 
       it '自己紹介が更新される' do
-        expect(@test_user.reload.self_introduction).to eq 'よろしくお願いします。'
+        expect(page).to have_content @test_user.reload.self_introduction
         save_and_open_page
       end
     end
