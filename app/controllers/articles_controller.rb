@@ -11,6 +11,7 @@ class ArticlesController < ApplicationController
   def create
     @article = Article.new(article_params)
     @article.user = current_user
+    @article.favorites_count = 0
     if @article.save
       redirect_to @article
       flash[:notice] = '記事が投稿されました。'
@@ -41,7 +42,7 @@ class ArticlesController < ApplicationController
     # 検索オブジェクト
     @search = Article.ransack(params[:q])
     # 検索結果
-    @articles = @search.result.page(params[:page]).per(10)
+    @articles = @search.result.page(params[:page]).per(10).order('created_at DESC')
   end
 
   # get /artcles/:id/edit
