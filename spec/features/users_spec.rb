@@ -88,20 +88,20 @@ RSpec.feature 'デバイス機能', type: :feature do
     before do
       @test_user = FactoryBot.create(:user)
       visit new_user_session_path
-      fill_in 'Eメール', with: 'tester@example.com'
-      fill_in 'パスワード', with: '123456'
+      fill_in 'Eメール', with: @test_user.email
+      fill_in 'パスワード', with: @test_user.password
       click_button 'ログインする'
       visit edit_user_registration_path(@test_user)
     end
 
-    context '現在のパスワードを入力にして更新する' do
+    context '「現在のパスワードフォーム」を削除して更新する' do
       before do
         fill_in 'ユーザー名', with: 'sugasawa'
         fill_in 'Eメール', with: 'test_update@example.com'
         fill_in '自己紹介', with: 'よろしくお願いします。'
         fill_in 'パスワード', with: 'abcdefg'
         fill_in 'パスワード（確認用）', with: 'abcdefg'
-        fill_in '現在のパスワード', with: '123456'
+        # fill_in '現在のパスワード', with: '123456'
         click_button '更新する'
       end
 
@@ -121,31 +121,31 @@ RSpec.feature 'デバイス機能', type: :feature do
       end
     end
 
-    context '現在のパスワードを未入力にして更新する' do
-      before do
-        fill_in 'ユーザー名', with: 'sugasawa'
-        fill_in 'Eメール', with: 'test_update@example.com'
-        fill_in '自己紹介', with: 'よろしくお願いします。'
-        fill_in 'パスワード', with: 'abcdefg'
-        fill_in 'パスワード（確認用）', with: 'abcdefg'
-        fill_in '現在のパスワード', with: ''
-        click_button '更新する'
-      end
+    # context '現在のパスワードを未入力にして更新する' do
+    #   before do
+    #     fill_in 'ユーザー名', with: 'sugasawa'
+    #     fill_in 'Eメール', with: 'test_update@example.com'
+    #     fill_in '自己紹介', with: 'よろしくお願いします。'
+    #     fill_in 'パスワード', with: 'abcdefg'
+    #     fill_in 'パスワード（確認用）', with: 'abcdefg'
+    #     fill_in '現在のパスワード', with: ''
+    #     click_button '更新する'
+    #   end
 
-      it 'ユーザー名が更新されない' do
-        expect(@test_user.reload.username).not_to eq 'sugasawa'
-        save_and_open_page
-      end
+    #   it 'ユーザー名が更新されない' do
+    #     expect(@test_user.reload.username).not_to eq 'sugasawa'
+    #     save_and_open_page
+    #   end
 
-      it 'メールアドレスが更新されない' do
-        expect(@test_user.reload.email).not_to eq 'test_update@example.com'
-        save_and_open_page
-      end
+    #   it 'メールアドレスが更新されない' do
+    #     expect(@test_user.reload.email).not_to eq 'test_update@example.com'
+    #     save_and_open_page
+    #   end
 
-      it '自己紹介が更新されない' do
-        expect(@test_user.reload.self_introduction).not_to eq 'よろしくお願いします。'
-        save_and_open_page
-      end
-    end
+    #   it '自己紹介が更新されない' do
+    #     expect(@test_user.reload.self_introduction).not_to eq 'よろしくお願いします。'
+    #     save_and_open_page
+    #   end
+    # end
   end
 end
