@@ -17,7 +17,7 @@ gem 'jquery-rails'
 gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.5'
 gem 'bcrypt', '~> 3.1.7'
-gem 'rails_admin', '~> 1.3' #管理者権限
+gem 'rails_admin', '~> 1.4' #管理者権限
 gem 'cancancan', '~> 2.0' #管理者権限
 gem 'carrierwave' #画像アップロード昨日
 gem 'rmagick' #画像の大きさを調整
